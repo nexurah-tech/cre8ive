@@ -19,13 +19,8 @@ export function CustomCursor() {
       setPosition({ x: e.clientX, y: e.clientY })
     }
 
-    const handleMouseEnter = () => {
-      setIsHovering(true)
-    }
-
-    const handleMouseLeave = () => {
-      setIsHovering(false)
-    }
+    const handleMouseEnter = () => setIsHovering(true)
+    const handleMouseLeave = () => setIsHovering(false)
 
     document.addEventListener('mousemove', handleMouseMove)
 
@@ -50,14 +45,14 @@ export function CustomCursor() {
     <>
       <div
         id="cursor"
-        className="fixed w-3 h-3 rounded-full pointer-events-none z-[9999] mix-blend-difference transition-all duration-200 ease-out"
+        className="fixed rounded-full pointer-events-none z-[9999] mix-blend-difference transition-all duration-200 ease-out"
         style={{
           left: `${position.x}px`,
           top: `${position.y}px`,
           transform: 'translate(-50%, -50%)',
           width: isHovering ? '60px' : '12px',
           height: isHovering ? '60px' : '12px',
-          backgroundColor: isHovering ? '#f2ede6' : '#c8f53a', // Use paper color on hover for high contrast difference
+          backgroundColor: isHovering ? '#f2ede6' : '#EAB308',
         }}
       />
       <div
