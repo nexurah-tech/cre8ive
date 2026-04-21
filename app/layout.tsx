@@ -10,23 +10,9 @@ const _spaceMono = Space_Mono({ weight: ['400', '700'], subsets: ["latin"], vari
 export const metadata: Metadata = {
   title: 'CR8IVE - Digital Growth Agency',
   description: 'Data-driven creative strategy to grow your brand 8X faster. Performance marketing that delivers real results.',
-  generator: 'v0.app',
   icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+    icon: '/favicon.png',
+    apple: '/favicon.png',
   },
 }
 
