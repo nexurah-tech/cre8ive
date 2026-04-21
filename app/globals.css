@@ -1,0 +1,155 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Brand Tokens - Reference the Hex codes from the strategy */
+  --ink: #0a0a0a;
+  --paper: #f2ede6;
+  --acid: #c8f53a;
+  --rust: #e04b1a;
+  --smoke: #b8b2a8;
+  
+  /* Semantic Variables - Light Mode */
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: var(--paper);
+  --card-foreground: var(--ink);
+  --popover: var(--paper);
+  --popover-foreground: var(--ink);
+  --primary: var(--ink); /* Strategy says premium premium authority */
+  --primary-foreground: var(--paper);
+  --secondary: var(--rust);
+  --secondary-foreground: white;
+  --muted: var(--smoke);
+  --muted-foreground: #555;
+  --accent: var(--acid);
+  --accent-foreground: var(--ink);
+  --destructive: #dc2626;
+  --destructive-foreground: white;
+  --border: rgba(10, 10, 10, 0.12);
+  --input: rgba(10, 10, 10, 0.08);
+  --ring: var(--acid);
+  --radius: 1.5rem; /* Smoother, rounder edges for Nexurah UI */
+}
+
+.dark {
+  --background: var(--ink);
+  --foreground: var(--paper);
+  --card: #151515;
+  --card-foreground: var(--paper);
+  --popover: #151515;
+  --popover-foreground: var(--paper);
+  --primary: var(--paper);
+  --primary-foreground: var(--ink);
+  --secondary: var(--rust);
+  --secondary-foreground: white;
+  --muted: #262626;
+  --muted-foreground: #999;
+  --accent: var(--acid);
+  --accent-foreground: var(--ink);
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.05);
+  --ring: var(--acid);
+}
+
+@theme inline {
+  /* Fonts */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'Clash Display', 'Geist', 'Space Grotesk', sans-serif;
+  --font-mono: 'Space Mono', 'JetBrains Mono', monospace;
+
+  /* Brand Colors Extracted for Utility Support (e.g. bg-acid/50) */
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-acid: var(--acid);
+  --color-rust: var(--rust);
+  --color-smoke: var(--smoke);
+
+  /* Semantic Theme Connections */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Spacing & Radius */
+  --radius-sm: calc(var(--radius) - 0.5rem);
+  --radius-md: calc(var(--radius) - 0.25rem);
+  --radius-lg: var(--radius);
+  /* Animations */
+  --animate-marquee: marquee 30s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-blob: blob 7s infinite;
+
+  /* Custom Utilities for Nexurah */
+  --animation-delay-1000: 1s;
+  --animation-delay-2000: 2s;
+  --animation-delay-3000: 3s;
+  --animation-delay-4000: 4s;
+  --animation-delay-5000: 5s;
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+  }
+}
+
+@utility animation-delay-* {
+  animation-delay: --value();
+}
+
+@utility glass-panel {
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  background-color: color-mix(in srgb, var(--color-paper) 60%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-foreground) 10%, transparent);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground selection:bg-accent selection:text-accent-foreground;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display text-balance tracking-tighter;
+  }
+}
+
+.dark .glass-panel {
+  background-color: color-mix(in srgb, var(--color-ink) 60%, transparent);
+}
+
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 50;
+}
+
