@@ -64,6 +64,7 @@ export default function Cre8iveHome() {
   const [activeCase, setActiveCase] = useState(0)
   const [expanded, setExpanded] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const [isPaused, setIsPaused] = useState(false)
 
   const FLAGSHIP_CASES = [
     {
@@ -99,11 +100,12 @@ export default function Cre8iveHome() {
   ]
 
   useEffect(() => {
+    if (isPaused) return
     const interval = setInterval(() => {
       setActiveCase((prev) => (prev === FLAGSHIP_CASES.length - 1 ? 0 : prev + 1))
-    }, 1000)
+    }, 4000)
     return () => clearInterval(interval)
-  }, [FLAGSHIP_CASES.length])
+  }, [FLAGSHIP_CASES.length, isPaused])
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 640)
@@ -314,7 +316,7 @@ export default function Cre8iveHome() {
 
         {/* Dynamic Flagship Slider: Strong Focus */}
         <div className="px-6 md:px-8 lg:px-16 max-w-5xl mx-auto mb-16 md:mb-20 relative z-10">
-          <div className="relative group/slider">
+          <div className="relative group/slider" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
             <div className="glass-panel bg-white/5 border border-white/10 rounded-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-2 animate-in fade-in zoom-in-95 duration-700" key={activeCase}>
               <div className="relative h-[200px] md:h-[240px] lg:h-auto overflow-hidden">
                 <img 
