@@ -1,4 +1,4 @@
-# Cre8ive_
+# Cr8ive_
 
 > **Data-Driven Scaling for High-Performance Growth.**
 
