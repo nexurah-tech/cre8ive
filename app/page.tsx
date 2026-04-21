@@ -7,7 +7,7 @@ import {
   Search, Zap, Share2, FileText, Mail, Target, Laptop, BarChart3, 
   Users, Link2, Shield, Palette, Play, Cpu, MousePointer2, 
   ShoppingBag, Smartphone, MapPin, Layers, MessageSquare,
-  TrendingUp, ChevronDown, ChevronUp
+  TrendingUp, ChevronDown, ChevronUp, Quote
 } from 'lucide-react'
 
 const SERVICES = [
@@ -33,9 +33,77 @@ const SERVICES = [
   { title: "Chatbot & CRM Integration", icon: MessageSquare, desc: "Instant response engines that capture leads 24/7/365.", cat: "Tech" },
 ]
 
+const TESTIMONIALS = [
+  {
+    quote: "Cre8ive didn't just run our ads; they became an extension of our executive team. They doubled our inbound leads in 90 days with zero increase in ad spend. Scientific and ruthless.",
+    name: "Sarah T.",
+    role: "CEO",
+    company: "FinTech Flow",
+    result: "+212% Pipeline Growth",
+    img: "/testimonial_1.png"
+  },
+  {
+    quote: "Finally, an agency that speaks math. We scaled our MRR by 40% in quarter one. Their reporting is the standard for growth intelligence in the SaaS world.",
+    name: "Mark R.",
+    role: "Founder",
+    company: "Alpha SaaS",
+    result: "40% MRR Lift",
+    img: "/testimonial_2.png"
+  },
+  {
+    quote: "The ROI wasn't a promise, it was an expectation they hit relentlessly. They saved us ₹1.2 Cr in wasted spend within the first month. Their audit alone is worth the retainer.",
+    name: "Elena G.",
+    role: "CMO",
+    company: "Global D2C",
+    result: "₹1.2 Cr Saved",
+    img: "/testimonial_3.png"
+  }
+]
+
 export default function Cre8iveHome() {
+  const [activeCase, setActiveCase] = useState(0)
   const [expanded, setExpanded] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+
+  const FLAGSHIP_CASES = [
+    {
+      vertical: "Fintech / Neo-Banking",
+      title: "Scaling Inbound Acquisition by 412% in 180 Days.",
+      challenge: "Client was burning ₹45 Lakhs/mo on broad Meta targeting with a stagnating CAC of ₹4,200 and poor lead quality.",
+      strategy: "Implemented an Intent-First SEO cluster strategy combined with hyper-segmented Google Search Ads.",
+      metrics: { m1: "₹12 Cr+", m2: "₹1,150", m3: "8.4x" },
+      labels: { l1: "New MRR", l2: "Blended CAC", l3: "LTV:CAC Ratio" },
+      img: "/case_1.png",
+      accent: "acid"
+    },
+    {
+      vertical: "E-commerce / D2C",
+      title: "Scaling a Skincare Brand to ₹25 Cr Annual Revenue.",
+      challenge: "Stuck at ₹5 Lakhs MRR with 1.2x ROAS. High cart abandonment and low repeat customer rate.",
+      strategy: "Retention-first email flows + Advantage+ Meta scaling + High-intent Google Shopping.",
+      metrics: { m1: "18.5x", m2: "74%", m3: "₹2.2 Cr" },
+      labels: { l1: "Peak ROAS", l2: "Retention Jump", l3: "Avg Monthly Rev" },
+      img: "/case_2.png",
+      accent: "rust"
+    },
+    {
+      vertical: "SaaS / Enterprise",
+      title: "Driving ₹8 Cr in Pipeline for an AI Cloud Platform.",
+      challenge: "Enterprise leads were costing ₹12,000 each with a 2% MQL to SQL conversion rate.",
+      strategy: "ABM (Account Based Marketing) on LinkedIn + Technical Content Clusters for SEO dominance.",
+      metrics: { m1: "₹2,400", m2: "14%", m3: "320+" },
+      labels: { l1: "CPL Reduction", l2: "SQL Conv Rate", l3: "F500 Leads" },
+      img: "/case_3.png",
+      accent: "blue-500"
+    }
+  ]
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveCase((prev) => (prev === FLAGSHIP_CASES.length - 1 ? 0 : prev + 1))
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [FLAGSHIP_CASES.length])
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 640)
@@ -56,7 +124,7 @@ export default function Cre8iveHome() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] pt-24 md:pt-32 pb-12 px-6 md:px-8 lg:px-16 flex items-center overflow-hidden">
+      <section className="relative min-h-[90vh] pt-12 md:pt-20 pb-12 px-6 md:px-8 lg:px-16 flex items-center overflow-hidden">
         {/* Background Atmosphere */}
         <div className="absolute top-1/4 -right-20 w-96 h-96 bg-acid/10 rounded-full mix-blend-screen filter blur-[100px] animate-blob"></div>
         <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-rust/10 rounded-full mix-blend-screen filter blur-[100px] animate-blob animation-delay-2000"></div>
@@ -160,7 +228,7 @@ export default function Cre8iveHome() {
         <div className="border-t border-b border-ink/10 py-8 md:py-12 mt-12 bg-paper/50">
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 px-6 md:px-8">
             <div className="text-center md:text-left">
-              <div className="font-display text-3xl md:text-4xl mb-2">$120M+</div>
+              <div className="font-display text-3xl md:text-4xl mb-2">₹1,000 Cr+</div>
               <div className="font-mono text-[10px] tracking-widest text-ink/50 uppercase">Ad Spend Managed</div>
             </div>
             <div className="hidden md:block w-px h-16 bg-ink/10"></div>
@@ -215,7 +283,7 @@ export default function Cre8iveHome() {
           <div className="mt-10 flex justify-center sm:hidden">
             <button 
               onClick={() => setExpanded(!expanded)}
-              className="flex items-center gap-3 font-mono text-[10px] tracking-[0.3em] uppercase text-acid py-4 px-8 border border-acid/20 rounded-full hover:bg-acid/10 transition-all"
+              className="flex items-center justify-center gap-2 font-mono text-[9px] sm:text-[10px] tracking-[0.15em] sm:tracking-[0.3em] uppercase text-acid py-4 px-6 sm:px-8 border border-acid/20 rounded-full hover:bg-acid/10 transition-all min-w-[240px]"
             >
               {expanded ? (
                 <>Collapse Arsenal <ChevronUp size={14} /></>
@@ -232,11 +300,11 @@ export default function Cre8iveHome() {
         <div className="absolute top-0 right-0 w-[1000px] h-[1000px] bg-acid/10 rounded-full filter blur-[150px] pointer-events-none opacity-20"></div>
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full filter blur-[100px] pointer-events-none"></div>
 
-        <div className="px-8 lg:px-16 max-w-7xl mx-auto mb-32 relative z-10">
+        <div className="px-8 lg:px-16 max-w-7xl mx-auto mb-20 md:mb-32 relative z-10">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
             <div className="max-w-2xl">
               <div className="font-mono text-xs tracking-[0.3em] uppercase text-acid mb-6">Execution Logs</div>
-              <h2 className="font-display text-5xl md:text-7xl leading-[0.95] tracking-tighter">Hard Data.<br/><span className="text-paper/20">No Fluff.</span></h2>
+              <h2 className="font-display text-5xl md:text-7xl leading-[0.95] tracking-tighter text-white">Hard Data.<br/><span className="text-paper/20">No Fluff.</span></h2>
             </div>
             <p className="text-paper/40 font-light max-w-xs text-sm leading-relaxed mb-4">
               We translate marketing spend into mathematical outcomes. Every percentage point represents a captured market share.
@@ -244,14 +312,106 @@ export default function Cre8iveHome() {
           </div>
         </div>
 
+        {/* Dynamic Flagship Slider: Strong Focus */}
+        <div className="px-6 md:px-8 lg:px-16 max-w-5xl mx-auto mb-16 md:mb-20 relative z-10">
+          <div className="relative group/slider">
+            <div className="glass-panel bg-white/5 border border-white/10 rounded-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-2 animate-in fade-in zoom-in-95 duration-700" key={activeCase}>
+              <div className="relative h-[200px] md:h-[240px] lg:h-auto overflow-hidden">
+                <img 
+                  src={FLAGSHIP_CASES[activeCase].img} 
+                  alt={FLAGSHIP_CASES[activeCase].title} 
+                  className="w-full h-full object-cover grayscale brightness-75 hover:grayscale-0 transition-all duration-1000 scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-ink/80 via-transparent to-transparent hidden lg:block"></div>
+                <div className="absolute top-4 left-4">
+                  <div className={`bg-${FLAGSHIP_CASES[activeCase].accent} text-ink font-mono text-[8px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-[0.2em] shadow-lg`}>
+                    Case 0{activeCase + 1}
+                  </div>
+                </div>
+              </div>
+              
+              <div className="p-5 md:p-7 lg:p-9 flex flex-col justify-center bg-ink/40 backdrop-blur-sm">
+                <div className={`font-mono text-[8px] tracking-widest uppercase text-${FLAGSHIP_CASES[activeCase].accent} mb-3`}>{FLAGSHIP_CASES[activeCase].vertical}</div>
+                <h3 className="font-display text-lg md:text-2xl lg:text-3xl text-white mb-5 leading-[1.1] tracking-tighter">
+                  {FLAGSHIP_CASES[activeCase].title}
+                </h3>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+                  <div className="space-y-1.5">
+                    <div className="font-mono text-[8px] uppercase text-paper/30 tracking-widest">Problem</div>
+                    <p className="text-[11px] text-paper/50 font-light leading-relaxed italic">
+                      "{FLAGSHIP_CASES[activeCase].challenge}"
+                    </p>
+                  </div>
+                  <div className="space-y-1.5">
+                    <div className={`font-mono text-[8px] uppercase text-${FLAGSHIP_CASES[activeCase].accent} tracking-widest`}>Fix</div>
+                    <p className="text-[11px] text-paper/60 font-light leading-relaxed">
+                      {FLAGSHIP_CASES[activeCase].strategy}
+                    </p>
+                  </div>
+                </div>
+                
+                <div className={`border-t border-white/10 pt-5 grid grid-cols-3 gap-3`}>
+                  <div>
+                    <div className="font-display text-lg md:text-xl text-white">{FLAGSHIP_CASES[activeCase].metrics.m1}</div>
+                    <div className="font-mono text-[7px] uppercase text-paper/20 mt-1 tracking-wider">{FLAGSHIP_CASES[activeCase].labels.l1}</div>
+                  </div>
+                  <div>
+                    <div className={`font-display text-lg md:text-xl text-${FLAGSHIP_CASES[activeCase].accent}`}>{FLAGSHIP_CASES[activeCase].metrics.m2}</div>
+                    <div className="font-mono text-[7px] uppercase text-paper/20 mt-1 tracking-wider">{FLAGSHIP_CASES[activeCase].labels.l2}</div>
+                  </div>
+                  <div>
+                    <div className="font-display text-lg md:text-xl text-white">{FLAGSHIP_CASES[activeCase].metrics.m3}</div>
+                    <div className="font-mono text-[7px] uppercase text-paper/20 mt-1 tracking-wider">{FLAGSHIP_CASES[activeCase].labels.l3}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Navigation Controls */}
+            <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4 z-20">
+              {FLAGSHIP_CASES.map((_, i) => (
+                <button 
+                  key={i} 
+                  onClick={() => setActiveCase(i)}
+                  className={`w-12 h-1.5 rounded-full transition-all duration-500 ${activeCase === i ? `bg-${FLAGSHIP_CASES[i].accent} w-20` : 'bg-white/10 hover:bg-white/30'}`}
+                />
+              ))}
+            </div>
+
+            {/* Side Controls (Desktop) */}
+            <button 
+              onClick={() => setActiveCase((prev) => (prev === 0 ? FLAGSHIP_CASES.length - 1 : prev - 1))}
+              className="absolute -left-12 lg:-left-20 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full border border-white/10 bg-white/5 text-white items-center justify-center hidden lg:flex hover:bg-acid hover:text-ink hover:border-acid transition-all z-20 group/btn shadow-xl backdrop-blur-sm"
+            >
+              <span className="text-xl group-hover/btn:-translate-x-1 transition-transform">←</span>
+            </button>
+            <button 
+              onClick={() => setActiveCase((prev) => (prev === FLAGSHIP_CASES.length - 1 ? 0 : prev + 1))}
+              className="absolute -right-12 lg:-right-20 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full border border-white/10 bg-white/5 text-white items-center justify-center hidden lg:flex hover:bg-acid hover:text-ink hover:border-acid transition-all z-20 group/btn shadow-xl backdrop-blur-sm"
+            >
+              <span className="text-xl group-hover/btn:translate-x-1 transition-transform">→</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Case Study Grid (The Arsenal of Results) */}
+        <div className="px-6 md:px-8 lg:px-16 max-w-7xl mx-auto mb-16 text-center lg:text-left pt-12 relative z-10">
+           <div className="font-mono text-[10px] tracking-widest uppercase text-paper/40 mb-4 flex items-center gap-3">
+             <span className="w-12 h-px bg-white/10"></span>
+             Direct Outcomes
+           </div>
+           <h4 className="font-display text-2xl md:text-4xl text-white mb-12 tracking-tight">The Growth Ledger</h4>
+        </div>
+
         {/* Case Study Grid */}
         <div className="px-6 md:px-8 lg:px-16 max-w-[90rem] mx-auto grid grid-cols-1 lg:grid-cols-3 gap-0 border border-white/10 relative z-10">
           {[
             { metric: '+315%', sub: 'MRR Growth', client: 'Bangalore Fintech', desc: 'Restructured Google Ads strategy to reduce CPA by ₹8,500 while tripling volume.', img: '/performance_metrics_visualization_1776790374020.png' },
-            { metric: '9.2x', sub: 'Blended ROAS', client: 'Mumbai E-Comm', desc: 'Rebuilt Meta funnel with dynamic creative testing generating ₹18 Cr in Q4.', img: '/cre8ive_hero_graphic_1776790355718.png' },
-            { metric: 'Rank #1', sub: 'Keyword Dominion', client: 'NCR Enterprise', desc: 'Technical SEO overhaul driving a new pipeline of inbound enterprise leads.', img: '/strategic_content_marketing_1776790391959.png' },
+            { metric: '9.2x', sub: 'Blended ROAS', client: 'Mumbai E-Comm', desc: 'Rebuilt Meta funnel with dynamic creative testing generating ₹18 Cr in Q4.', img: '/case_2.png' },
+            { metric: 'Rank #1', sub: 'Keyword Dominion', client: 'NCR Enterprise', desc: 'Technical SEO overhaul driving a new pipeline of inbound enterprise leads.', img: '/case_3.png' },
           ].map((item, i) => (
-            <div key={i} className="group relative aspect-[3/4] lg:aspect-auto min-h-[450px] md:min-h-[550px] lg:min-h-[650px] overflow-hidden border-b lg:border-b-0 lg:border-r last:border-r-0 border-white/10 flex flex-col justify-end p-8 md:p-12 hover:bg-ink/50 transition-all duration-700">
+            <div key={i} className="group relative aspect-[3/4] lg:aspect-auto min-h-[350px] md:min-h-[450px] lg:min-h-[500px] overflow-hidden border-b lg:border-b-0 lg:border-r last:border-r-0 border-white/10 flex flex-col justify-end p-6 md:p-10 hover:bg-ink/50 transition-all duration-700">
                {/* Background Image with Hover Reveal */}
                <div className="absolute inset-0 z-0">
                 <img 
@@ -318,6 +478,57 @@ export default function Cre8iveHome() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* The Boardroom (Testimonials) */}
+      <section id="boardroom" className="py-20 md:py-32 px-6 md:px-8 lg:px-16 bg-black text-paper relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-rust/5 rounded-full filter blur-[150px] pointer-events-none"></div>
+        
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-20 md:mb-32">
+            <div className="font-mono text-xs tracking-[0.4em] uppercase text-acid mb-6">Voice of Authority</div>
+            <h2 className="font-display text-4xl md:text-6xl lg:text-7xl leading-none tracking-tighter text-white">The Boardroom <span className="text-paper/20 italic">Verdict.</span></h2>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
+            {TESTIMONIALS.map((t, i) => (
+              <div key={i} className="group flex flex-col">
+                <div className="glass-panel p-8 md:p-10 rounded-3xl border border-white/5 bg-white/[0.02] flex-grow hover:border-acid/20 transition-all duration-500 relative flex flex-col justify-between">
+                  {/* Quote Icon Background */}
+                  <div className="absolute top-6 right-8 text-white/5 group-hover:text-acid/10 transition-colors">
+                    <Quote size={80} strokeWidth={1} />
+                  </div>
+
+                  <div>
+                    <div className="mb-8 flex items-center gap-3">
+                       <div className="w-16 h-16 rounded-2xl overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700 border border-white/10 group-hover:border-acid/30">
+                         <img src={t.img} alt={t.name} className="w-full h-full object-cover" />
+                       </div>
+                       <div>
+                         <div className="font-display text-lg text-white group-hover:text-acid transition-colors">{t.name}</div>
+                         <div className="font-mono text-[10px] uppercase text-paper/40 tracking-widest">{t.role}, {t.company}</div>
+                       </div>
+                    </div>
+
+                    <p className="text-paper/70 text-base md:text-lg leading-relaxed font-light mb-10 italic">
+                      "{t.quote}"
+                    </p>
+                  </div>
+
+                  <div className="pt-8 border-t border-white/5 flex items-center justify-between">
+                    <div>
+                      <div className="font-mono text-[9px] uppercase text-paper/30 tracking-widest mb-1">Measured Outcome</div>
+                      <div className="font-display text-xl text-white group-hover:text-acid transition-colors">{t.result}</div>
+                    </div>
+                    <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-acid group-hover:border-acid group-hover:text-ink transition-all">
+                      <span className="text-xs">→</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
