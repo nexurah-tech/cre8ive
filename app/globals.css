@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Iceland&family=Rowdies:wght@300;400;700&display=swap');
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
@@ -57,7 +58,8 @@
 @theme inline {
   /* Fonts */
   --font-sans: 'Inter', system-ui, sans-serif;
-  --font-display: 'Clash Display', 'Geist', 'Space Grotesk', sans-serif;
+  --font-display: 'Rowdies', 'Clash Display', 'Geist', 'Space Grotesk', sans-serif;
+  --font-iceland: 'Iceland', sans-serif;
   --font-mono: 'Space Mono', 'JetBrains Mono', monospace;
 
   /* Brand Colors Extracted for Utility Support (e.g. bg-acid/50) */
@@ -119,9 +121,9 @@
 }
 
 @utility glass-panel {
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  background-color: color-mix(in srgb, var(--color-paper) 60%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background-color: color-mix(in srgb, var(--color-paper) 70%, transparent);
   border: 1px solid color-mix(in srgb, var(--color-foreground) 10%, transparent);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
 }
@@ -153,3 +155,60 @@
   z-index: 50;
 }
 
+.iceland-regular {
+  font-family: "Iceland", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.rowdies-light {
+  font-family: "Rowdies", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.rowdies-regular {
+  font-family: "Rowdies", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.rowdies-bold {
+  font-family: "Rowdies", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* ─── Custom Scrollbar ─────────────────────────────────────────── */
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #EAB308 #0a0a0a;
+}
+
+/* Chromium / Edge / Safari */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #EAB308;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f5c842;
+}
+
+::-webkit-scrollbar-corner {
+  background: #0a0a0a;
+}

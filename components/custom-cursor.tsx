@@ -1,28 +1,63 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef } from 'react'
 
 export function CustomCursor() {
-  const [position, setPosition] = useState({ x: 0, y: 0 })
-  const [isHovering, setIsHovering] = useState(false)
-  const [isVisible, setIsVisible] = useState(false)
+  const dotRef = useRef<HTMLDivElement>(null)
+  const ringRef = useRef<HTMLDivElement>(null)
+  const posRef = useRef({ x: 0, y: 0 })
+  const rafRef = useRef<number>(0)
 
   useEffect(() => {
     // Hide cursor on touch devices
-    if (window.matchMedia('(pointer: coarse)').matches) {
-      return
-    }
+    if (window.matchMedia('(pointer: coarse)').matches) return
 
-    setIsVisible(true)
+    const dot = dotRef.current
+    const ring = ringRef.current
+    if (!dot || !ring) return
+
+    dot.style.display = 'block'
+    ring.style.display = 'block'
+
+    // Use RAF loop to apply position — decoupled from React renders
+    const updateDOM = () => {
+      const { x, y } = posRef.current
+      dot.style.left = `${x}px`
+      dot.style.top = `${y}px`
+      ring.style.left = `${x}px`
+      ring.style.top = `${y}px`
+      rafRef.current = requestAnimationFrame(updateDOM)
+    }
+    rafRef.current = requestAnimationFrame(updateDOM)
 
     const handleMouseMove = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY })
+      // Just update ref — no setState, no re-render
+      posRef.current = { x: e.clientX, y: e.clientY }
     }
 
-    const handleMouseEnter = () => setIsHovering(true)
-    const handleMouseLeave = () => setIsHovering(false)
+    const setHover = (hovering: boolean) => {
+      if (!dot || !ring) return
+      if (hovering) {
+        dot.style.width = '60px'
+        dot.style.height = '60px'
+        dot.style.backgroundColor = '#f2ede6'
+        ring.style.width = '80px'
+        ring.style.height = '80px'
+        ring.style.opacity = '0'
+      } else {
+        dot.style.width = '12px'
+        dot.style.height = '12px'
+        dot.style.backgroundColor = '#EAB308'
+        ring.style.width = '40px'
+        ring.style.height = '40px'
+        ring.style.opacity = '0.5'
+      }
+    }
 
-    document.addEventListener('mousemove', handleMouseMove)
+    const handleMouseEnter = () => setHover(true)
+    const handleMouseLeave = () => setHover(false)
+
+    document.addEventListener('mousemove', handleMouseMove, { passive: true })
 
     const links = document.querySelectorAll('a, button')
     links.forEach((el) => {
@@ -31,6 +66,7 @@ export function CustomCursor() {
     })
 
     return () => {
+      cancelAnimationFrame(rafRef.current)
       document.removeEventListener('mousemove', handleMouseMove)
       links.forEach((el) => {
         el.removeEventListener('mouseenter', handleMouseEnter)
@@ -39,32 +75,43 @@ export function CustomCursor() {
     }
   }, [])
 
-  if (!isVisible) return null
-
   return (
     <>
       <div
         id="cursor"
-        className="fixed rounded-full pointer-events-none z-[9999] mix-blend-difference transition-all duration-200 ease-out"
+        ref={dotRef}
         style={{
-          left: `${position.x}px`,
-          top: `${position.y}px`,
+          display: 'none',
+          position: 'fixed',
+          width: '12px',
+          height: '12px',
+          backgroundColor: '#EAB308',
+          borderRadius: '50%',
+          pointerEvents: 'none',
+          zIndex: 9999,
+          mixBlendMode: 'difference',
           transform: 'translate(-50%, -50%)',
-          width: isHovering ? '60px' : '12px',
-          height: isHovering ? '60px' : '12px',
-          backgroundColor: isHovering ? '#f2ede6' : '#EAB308',
+          transition: 'width 0.2s ease-out, height 0.2s ease-out, background-color 0.2s ease-out',
+          willChange: 'transform',
         }}
       />
       <div
         id="cursor-ring"
-        className="fixed border border-white rounded-full pointer-events-none z-[9998] mix-blend-difference transition-all duration-300 ease-out"
+        ref={ringRef}
         style={{
-          left: `${position.x}px`,
-          top: `${position.y}px`,
+          display: 'none',
+          position: 'fixed',
+          width: '40px',
+          height: '40px',
+          border: '1px solid white',
+          borderRadius: '50%',
+          pointerEvents: 'none',
+          zIndex: 9998,
+          mixBlendMode: 'difference',
           transform: 'translate(-50%, -50%)',
-          width: isHovering ? '80px' : '40px',
-          height: isHovering ? '80px' : '40px',
-          opacity: isHovering ? 0 : 0.5,
+          opacity: 0.5,
+          transition: 'width 0.3s ease-out, height 0.3s ease-out, opacity 0.3s ease-out',
+          willChange: 'transform',
         }}
       />
     </>

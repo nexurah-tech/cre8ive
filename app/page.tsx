@@ -385,7 +385,7 @@ export default function Cre8iveHome() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] pt-12 md:pt-20 pb-12 px-6 md:px-8 lg:px-16 flex items-center overflow-hidden">
+      <section className="relative pt-24 pb-12 md:min-h-[90vh] md:pt-20 md:pb-12 px-6 md:px-8 lg:px-16 flex items-center overflow-hidden">
         {/* Background Atmosphere */}
         <div className="absolute top-1/4 -right-20 w-96 h-96 bg-acid/10 rounded-full mix-blend-screen filter blur-[100px] animate-blob"></div>
         <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-rust/10 rounded-full mix-blend-screen filter blur-[100px] animate-blob animation-delay-2000"></div>
@@ -422,7 +422,7 @@ export default function Cre8iveHome() {
           <div className="relative h-[480px] w-full hidden lg:flex items-center justify-center">
             {/* Premium Interactive Widget */}
             <BorderGlow
-              className="relative w-full max-w-[400px] aspect-square rounded-[2rem] overflow-hidden group shadow-2xl border border-white/5"
+              className="relative w-full max-w-[550px] aspect-[1.5/1] rounded-[2rem] overflow-hidden group shadow-2xl border border-white/5"
               backgroundColor="#080808"
               glowColor="45 93 47"
               colors={['#EAB308', '#FDE047', '#CA8A04']}
@@ -453,20 +453,33 @@ export default function Cre8iveHome() {
 
                 <div className="my-auto py-4">
                   <div className="font-mono text-[10px] tracking-[0.2em] text-paper/40 mb-2 uppercase">Revenue Generated</div>
-                  <div className="font-display text-4xl lg:text-5xl xl:text-6xl tracking-tighter text-white group-hover:text-acid transition-colors duration-500">
-                    <span className="text-2xl lg:text-3xl mr-1 font-sans text-paper/50">₹</span>14,29,18,<span className="animate-pulse">842</span>
+                  <div className="font-display text-3xl lg:text-4xl xl:text-5xl tracking-tighter text-white group-hover:text-acid transition-colors duration-500">
+                    <span className="text-xl lg:text-2xl mr-1 font-sans text-paper/50">₹</span>14,29,18,<span className="animate-pulse">842</span>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
-                  <div className="glass-panel border border-white/10 bg-black/40 backdrop-blur-md rounded-2xl p-4 flex flex-col justify-center group/card transition-all hover:border-acid/30">
-                    <div className="font-mono text-[8px] text-white/40 mb-1 uppercase tracking-widest group-hover/card:text-acid/60 transition-colors">AGGREGATE ROAS</div>
-                    <div className="font-display text-2xl lg:text-3xl text-white">6.4x</div>
+                  <div className="glass-panel border border-white/5 bg-white/[0.03] backdrop-blur-xl rounded-2xl p-3 flex items-center gap-4 group/card transition-all hover:bg-white/[0.06] hover:border-acid/40">
+                    <div className="w-10 h-10 rounded-xl bg-white/[0.03] flex items-center justify-center border border-white/5 group-hover/card:border-acid/20 transition-colors">
+                      <TrendingUp size={18} className="text-acid/60 group-hover/card:text-acid transition-colors" />
+                    </div>
+                    <div>
+                      <div className="font-mono text-[8px] text-paper/30 uppercase tracking-[0.1em] mb-0.5">ROAS</div>
+                      <div className="font-display text-xl lg:text-2xl text-white group-hover/card:text-acid transition-colors leading-none">6.4x</div>
+                    </div>
                   </div>
-                  <div className="glass-panel border border-white/10 bg-black/40 backdrop-blur-md rounded-2xl p-4 flex flex-col justify-center relative group/card transition-all hover:border-acid/30">
-                    <div className="font-mono text-[8px] text-white/40 mb-1 uppercase tracking-widest group-hover/card:text-acid/60 transition-colors">ACTIVE CAMPAIGNS</div>
-                    <div className="font-display text-2xl lg:text-3xl text-white">124</div>
-                    <div className="font-mono text-[8px] text-acid mt-1 font-bold tracking-tighter uppercase">+312% YOY AVG</div>
+                  
+                  <div className="glass-panel border border-white/5 bg-white/[0.03] backdrop-blur-xl rounded-2xl p-3 flex items-center gap-4 group/card transition-all hover:bg-white/[0.06] hover:border-acid/40">
+                    <div className="w-10 h-10 rounded-xl bg-white/[0.03] flex items-center justify-center border border-white/5 group-hover/card:border-acid/20 transition-colors">
+                      <Zap size={18} className="text-acid/60 group-hover/card:text-acid transition-colors" />
+                    </div>
+                    <div>
+                      <div className="font-mono text-[8px] text-paper/30 uppercase tracking-[0.1em] mb-0.5">LIVE</div>
+                      <div className="flex items-baseline gap-2">
+                        <div className="font-display text-xl lg:text-2xl text-white group-hover/card:text-acid transition-colors leading-none">124</div>
+                        <div className="font-mono text-[7px] text-acid font-bold animate-pulse">+312%</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -572,7 +585,7 @@ export default function Cre8iveHome() {
       </section>
 
       {/* The Arsenal (Services / Bento Grid) */}
-      <section id="arsenal" className="pt-4 pb-16 md:pt-8 md:pb-24 px-6 md:px-8 lg:px-16 max-w-7xl mx-auto">
+      <section id="arsenal" className="pt-16 pb-16 md:pt-32 md:pb-24 px-6 md:px-8 lg:px-16 max-w-7xl mx-auto">
         <div className="mb-12 md:mb-20">
           <div className="font-mono text-[10px] tracking-widest uppercase text-acid mb-4 flex items-center gap-3">
             <span className="w-6 h-px bg-acid"></span> 
@@ -585,12 +598,12 @@ export default function Cre8iveHome() {
           {visibleServices.map((service, i) => (
             <BorderGlow
               key={i}
-              className="glass-panel p-6 rounded-2xl border border-white/5 bg-ink/40 group hover:border-acid/30 transition-all duration-500 flex flex-col justify-between hover:-translate-y-1 animate-in fade-in slide-in-from-bottom-4 duration-500"
+              className={`glass-panel p-6 ${isMobile ? 'rounded-xl bg-black/60' : 'rounded-2xl bg-ink/40'} border border-white/5 group hover:border-acid/30 transition-all duration-500 flex flex-col justify-between hover:-translate-y-1 animate-in fade-in slide-in-from-bottom-4 duration-500`}
               style={{ animationDelay: `${i * 50}ms` }}
-              backgroundColor="#0a0a0a"
+              backgroundColor={isMobile ? "#050505" : "#0a0a0a"}
               glowColor="45 93 47"
               colors={['#EAB308', '#FDE047', '#CA8A04']}
-              borderRadius={16}
+              borderRadius={isMobile ? 12 : 16}
             >
               <div>
                 <div className="flex justify-between items-start mb-6">
@@ -603,10 +616,6 @@ export default function Cre8iveHome() {
                 <p className="text-paper/50 text-sm font-light leading-relaxed mb-6">
                   {service.desc}
                 </p>
-              </div>
-              <div className="pt-4 border-t border-white/5 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity">
-                <span className="font-mono text-[10px] tracking-widest uppercase text-acid">Expertise Loaded</span>
-                <span className="text-acid">↗</span>
               </div>
             </BorderGlow>
           ))}
@@ -764,19 +773,19 @@ export default function Cre8iveHome() {
                 <img 
                   src={item.img} 
                   alt={item.client} 
-                  className="w-full h-full object-cover grayscale opacity-20 group-hover:opacity-40 group-hover:scale-110 group-hover:grayscale-0 transition-all duration-1000 ease-out" 
+                  className="w-full h-full object-cover grayscale opacity-30 lg:opacity-20 group-hover:opacity-40 group-hover:scale-110 group-hover:grayscale-0 transition-all duration-1000 ease-out" 
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
               </div>
 
               <div className="relative z-10 w-full">
                 <div className="mb-6 py-2 overflow-hidden">
-                   <div className="font-mono text-[10px] tracking-widest uppercase text-acid transform translate-y-[120%] group-hover:translate-y-0 transition-transform duration-500">Verified Outcome</div>
+                   <div className="font-mono text-[10px] tracking-widest uppercase text-acid transform translate-y-0 lg:translate-y-[120%] group-hover:translate-y-0 transition-transform duration-500">Verified Outcome</div>
                    <div className="w-12 h-px bg-white/20 group-hover:w-full transition-all duration-1000 mt-2"></div>
                 </div>
                 
                 <h3 className="font-mono text-xs uppercase text-paper/40 mb-4">{item.client}</h3>
-                <div className="font-display text-5xl md:text-8xl leading-none text-white tracking-tighter mb-4 group-hover:text-acid transition-colors">
+                <div className="font-display text-4xl md:text-6xl leading-none text-white tracking-tighter mb-4 group-hover:text-acid transition-colors">
                   {item.metric}
                 </div>
                 <div className="font-mono text-sm uppercase text-paper tracking-widest mb-8">
@@ -786,10 +795,10 @@ export default function Cre8iveHome() {
                   {item.desc}
                 </p>
                 
-                <div className="mt-10 pt-8 border-t border-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                   <button className="flex items-center gap-3 text-xs font-mono tracking-widest uppercase text-white hover:text-acid transition-colors">
-                     Explore Strategy <span className="text-lg">→</span>
-                   </button>
+                <div className="mt-8 pt-6 border-t border-white/10 opacity-40 group-hover:opacity-100 transition-opacity duration-700">
+                   <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-paper/40 group-hover:text-acid transition-colors">
+                     Case Study Ref.0{i + 1}
+                   </div>
                 </div>
               </div>
               
@@ -935,23 +944,23 @@ export default function Cre8iveHome() {
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl leading-[1.05] tracking-tighter mb-6 text-balance">
                 Outgrow your <span className="text-acid italic">competition.</span>
               </h2>
-              <p className="text-sm md:text-base text-ink/70 font-light mb-8 max-w-md">
+              <p className="text-sm md:text-base text-ink/85 font-normal mb-8 max-w-md">
                 Ready to stop guessing? Claim your complimentary Growth Audit. We&apos;ll show you exactly where you&apos;re losing money and the exact strategy we&apos;d use to fix it.
               </p>
               
               <div className="space-y-3 mb-10">
-                <a href="mailto:hello@cre8ive.in" className="font-display text-lg md:text-2xl tracking-wide text-ink hover:text-acid transition-colors block">
+                <a href="mailto:hello@cre8ive.in" className="font-display text-lg md:text-2xl tracking-wide text-ink hover:text-acid transition-colors block underline decoration-acid/30 underline-offset-8">
                   hello@cre8ive.in
                 </a>
-                <p className="font-mono text-[10px] md:text-xs text-ink/60 uppercase tracking-[0.2em]">+91 91234 56789 — Bangalore, IN</p>
+                <p className="font-mono text-[10px] md:text-xs text-ink/80 uppercase tracking-[0.2em] font-medium">+91 91234 56789 — Bangalore, IN</p>
               </div>
               
               <div className="mt-auto">
-                <p className="font-mono text-[10px] tracking-widest uppercase text-ink/40 mb-5">Strategic Partners</p>
-                <div className="flex flex-wrap gap-x-8 gap-y-4 opacity-40 grayscale">
-                   <span className="font-display text-[10px] md:text-xs tracking-wider text-ink border-b border-ink/10 pb-0.5">GOOGLE ADS</span>
-                   <span className="font-display text-[10px] md:text-xs tracking-wider text-ink border-b border-ink/10 pb-0.5">META BUSINESS</span>
-                   <span className="font-display text-[10px] md:text-xs tracking-wider text-ink border-b border-ink/10 pb-0.5">SHOPIFY PLUS</span>
+                <p className="font-mono text-[10px] tracking-widest uppercase text-ink/60 mb-5 font-bold">Strategic Partners</p>
+                <div className="flex flex-wrap gap-x-8 gap-y-4 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+                   <span className="font-display text-[10px] md:text-xs tracking-wider text-ink border-b-2 border-acid/20 pb-0.5">GOOGLE ADS</span>
+                   <span className="font-display text-[10px] md:text-xs tracking-wider text-ink border-b-2 border-acid/20 pb-0.5">META BUSINESS</span>
+                   <span className="font-display text-[10px] md:text-xs tracking-wider text-ink border-b-2 border-acid/20 pb-0.5">SHOPIFY PLUS</span>
                 </div>
               </div>
             </div>
