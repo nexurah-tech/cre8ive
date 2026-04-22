@@ -63,4 +63,4 @@ npm run build
 
 ---
 
-Built with precision by **Cre8ive Engineering**.
+Built with precision by **Cr8ive Engineering**.
