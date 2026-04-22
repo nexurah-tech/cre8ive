@@ -385,7 +385,7 @@ export default function Cre8iveHome() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative pt-24 pb-12 md:min-h-[90vh] md:pt-20 md:pb-12 px-6 md:px-8 lg:px-16 flex items-center overflow-hidden">
+      <section className="relative min-h-[100dvh] pt-28 pb-16 md:min-h-[90vh] md:pt-20 md:pb-12 px-6 md:px-8 lg:px-16 flex items-center justify-center overflow-hidden">
         {/* Background Atmosphere */}
         <div className="absolute top-1/4 -right-20 w-96 h-96 bg-acid/10 rounded-full mix-blend-screen filter blur-[100px] animate-blob"></div>
         <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-rust/10 rounded-full mix-blend-screen filter blur-[100px] animate-blob animation-delay-2000"></div>
