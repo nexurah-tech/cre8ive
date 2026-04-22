@@ -87,7 +87,7 @@ const SERVICES = [
 
 const TESTIMONIALS = [
   {
-    quote: "Cre8ive didn't just run our ads; they became an extension of our executive team. They doubled our inbound leads in 90 days with zero increase in ad spend. Scientific and ruthless.",
+    quote: "Cr8ive didn't just run our ads; they became an extension of our executive team. They doubled our inbound leads in 90 days with zero increase in ad spend. Scientific and ruthless.",
     name: "Sarah T.",
     role: "CEO",
     company: "FinTech Flow",
@@ -111,7 +111,7 @@ const TESTIMONIALS = [
     img: "/testimonial_3.png"
   },
   {
-    quote: "From day one, Cre8ive operated like a growth partner, not a vendor. Their data-led funnel strategy took us from 2x to 11x ROAS in under 60 days. I've worked with five agencies — none came close.",
+    quote: "From day one, Cr8ive operated like a growth partner, not a vendor. Their data-led funnel strategy took us from 2x to 11x ROAS in under 60 days. I've worked with five agencies — none came close.",
     name: "Rohan S.",
     role: "Director of Growth",
     company: "NexaCommerce",
@@ -119,7 +119,7 @@ const TESTIMONIALS = [
     img: "/testimonial_1.png"
   },
   {
-    quote: "We'd burned through two agencies before Cre8ive. Within 45 days they'd restructured our entire paid strategy, eliminated ₹80L in wasted budget, and delivered a 290% surge in qualified leads. Unmatched.",
+    quote: "We'd burned through two agencies before Cr8ive. Within 45 days they'd restructured our entire paid strategy, eliminated ₹80L in wasted budget, and delivered a 290% surge in qualified leads. Unmatched.",
     name: "Priya M.",
     role: "VP Marketing",
     company: "ScaleUp India",
@@ -127,7 +127,7 @@ const TESTIMONIALS = [
     img: "/testimonial_2.png"
   },
   {
-    quote: "Cre8ive's SEO cluster strategy was the single best investment we made in 2024. Organic traffic went from 12K to 180K monthly visits in 8 months. They don't just promise growth — they engineer it.",
+    quote: "Cr8ive's SEO cluster strategy was the single best investment we made in 2024. Organic traffic went from 12K to 180K monthly visits in 8 months. They don't just promise growth — they engineer it.",
     name: "Arjun K.",
     role: "Co-Founder",
     company: "BrandStack",
@@ -319,7 +319,7 @@ const CustomSelect = ({ label, options, placeholder }: { label: string, options:
   )
 }
 
-export default function Cre8iveHome() {
+export default function Cr8iveHome() {
   const [activeCase, setActiveCase] = useState(0)
   const [expanded, setExpanded] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
@@ -390,7 +390,7 @@ export default function Cre8iveHome() {
         <div className="absolute top-1/4 -right-20 w-96 h-96 bg-acid/10 rounded-full mix-blend-screen filter blur-[100px] animate-blob"></div>
         <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-rust/10 rounded-full mix-blend-screen filter blur-[100px] animate-blob animation-delay-2000"></div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-7xl mx-auto w-full relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-16 items-center max-w-7xl mx-auto w-full relative z-10">
           <div className="pr-4 lg:pr-12">
             <div className="font-mono text-xs tracking-widest uppercase text-acid mb-6 flex items-center gap-3">
               <span className="inline-block w-8 h-[2px] bg-acid"></span>
@@ -419,10 +419,10 @@ export default function Cre8iveHome() {
             </div>
           </div>
 
-          <div className="relative h-[480px] w-full hidden lg:flex items-center justify-center">
+          <div className="relative h-[340px] sm:h-[400px] md:h-[480px] w-full flex items-center justify-center mt-2 md:mt-8 lg:mt-0">
             {/* Premium Interactive Widget */}
             <BorderGlow
-              className="relative w-full max-w-[550px] aspect-[1.5/1] rounded-[2rem] overflow-hidden group shadow-2xl border border-white/5"
+              className="relative w-full max-w-[340px] sm:max-w-[420px] md:max-w-[550px] aspect-[1.3/1] sm:aspect-[1.5/1] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden group shadow-2xl border border-white/5"
               backgroundColor="#080808"
               glowColor="45 93 47"
               colors={['#EAB308', '#FDE047', '#CA8A04']}
@@ -431,7 +431,7 @@ export default function Cre8iveHome() {
               <div className="absolute inset-0 z-0">
                 <img 
                   src="/cre8ive_hero_graphic_1776790355718.png" 
-                  alt="Cre8ive Digital Growth" 
+                  alt="Cr8ive Digital Growth" 
                   className="w-full h-full object-cover opacity-30 group-hover:opacity-50 group-hover:scale-110 transition-all duration-1000 grayscale group-hover:grayscale-0"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/60"></div>
@@ -439,7 +439,7 @@ export default function Cre8iveHome() {
                 <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.02),rgba(0,255,0,0.01),rgba(0,0,255,0.02))] bg-[length:100%_2px,3px_100%] pointer-events-none opacity-20"></div>
               </div>
               
-              <div className="relative z-10 h-full p-7 lg:p-8 flex flex-col justify-between">
+              <div className="relative z-10 h-full p-5 sm:p-7 md:p-8 flex flex-col justify-between">
                 <div className="flex justify-between items-start">
                   <div>
                     <div className="font-mono text-[9px] tracking-[0.3em] text-acid mb-1 uppercase font-bold">Acquisition Engine</div>
@@ -453,31 +453,31 @@ export default function Cre8iveHome() {
 
                 <div className="my-auto py-4">
                   <div className="font-mono text-[10px] tracking-[0.2em] text-paper/40 mb-2 uppercase">Revenue Generated</div>
-                  <div className="font-display text-3xl lg:text-4xl xl:text-5xl tracking-tighter text-white group-hover:text-acid transition-colors duration-500">
-                    <span className="text-xl lg:text-2xl mr-1 font-sans text-paper/50">₹</span>14,29,18,<span className="animate-pulse">842</span>
+                  <div className="font-display text-2xl sm:text-3xl md:text-4xl xl:text-5xl tracking-tighter text-white group-hover:text-acid transition-colors duration-500">
+                    <span className="text-base sm:text-xl md:text-2xl mr-1 font-sans text-paper/50">₹</span>14,29,18,<span className="animate-pulse">842</span>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
-                  <div className="glass-panel border border-white/5 bg-white/[0.03] backdrop-blur-xl rounded-2xl p-3 flex items-center gap-4 group/card transition-all hover:bg-white/[0.06] hover:border-acid/40">
-                    <div className="w-10 h-10 rounded-xl bg-white/[0.03] flex items-center justify-center border border-white/5 group-hover/card:border-acid/20 transition-colors">
-                      <TrendingUp size={18} className="text-acid/60 group-hover/card:text-acid transition-colors" />
+                  <div className="glass-panel border border-white/5 bg-white/[0.03] backdrop-blur-xl rounded-xl md:rounded-2xl p-2.5 md:p-3 flex items-center gap-3 md:gap-4 group/card transition-all hover:bg-white/[0.06] hover:border-acid/40">
+                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-white/[0.03] flex items-center justify-center border border-white/5 group-hover/card:border-acid/20 transition-colors">
+                      <TrendingUp size={14} className="text-acid/60 md:size-[18px] group-hover/card:text-acid transition-colors" />
                     </div>
                     <div>
-                      <div className="font-mono text-[8px] text-paper/30 uppercase tracking-[0.1em] mb-0.5">ROAS</div>
-                      <div className="font-display text-xl lg:text-2xl text-white group-hover/card:text-acid transition-colors leading-none">6.4x</div>
+                      <div className="font-mono text-[7px] md:text-[8px] text-paper/30 uppercase tracking-[0.1em] mb-0.5">ROAS</div>
+                      <div className="font-display text-lg md:text-xl lg:text-2xl text-white group-hover/card:text-acid transition-colors leading-none">6.4x</div>
                     </div>
                   </div>
                   
-                  <div className="glass-panel border border-white/5 bg-white/[0.03] backdrop-blur-xl rounded-2xl p-3 flex items-center gap-4 group/card transition-all hover:bg-white/[0.06] hover:border-acid/40">
-                    <div className="w-10 h-10 rounded-xl bg-white/[0.03] flex items-center justify-center border border-white/5 group-hover/card:border-acid/20 transition-colors">
-                      <Zap size={18} className="text-acid/60 group-hover/card:text-acid transition-colors" />
+                  <div className="glass-panel border border-white/5 bg-white/[0.03] backdrop-blur-xl rounded-xl md:rounded-2xl p-2.5 md:p-3 flex items-center gap-3 md:gap-4 group/card transition-all hover:bg-white/[0.06] hover:border-acid/40">
+                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-white/[0.03] flex items-center justify-center border border-white/5 group-hover/card:border-acid/20 transition-colors">
+                      <Zap size={14} className="text-acid/60 md:size-[18px] group-hover/card:text-acid transition-colors" />
                     </div>
                     <div>
-                      <div className="font-mono text-[8px] text-paper/30 uppercase tracking-[0.1em] mb-0.5">LIVE</div>
+                      <div className="font-mono text-[7px] md:text-[8px] text-paper/30 uppercase tracking-[0.1em] mb-0.5">LIVE</div>
                       <div className="flex items-baseline gap-2">
-                        <div className="font-display text-xl lg:text-2xl text-white group-hover/card:text-acid transition-colors leading-none">124</div>
-                        <div className="font-mono text-[7px] text-acid font-bold animate-pulse">+312%</div>
+                        <div className="font-display text-lg md:text-xl lg:text-2xl text-white group-hover/card:text-acid transition-colors leading-none">124</div>
+                        <div className="font-mono text-[6px] md:text-[7px] text-acid font-bold animate-pulse">+312%</div>
                       </div>
                     </div>
                   </div>
@@ -522,7 +522,7 @@ export default function Cre8iveHome() {
                 <span className="text-paper border-b border-paper/20">math doesn't work</span>.
               </p>
               <p className="text-base md:text-lg leading-relaxed font-light text-paper/65 text-justify lg:text-left">
-                At Cre8ive, we treat your marketing budget like an{' '}
+                At Cr8ive, we treat your marketing budget like an{' '}
                 <span className="italic text-paper/90">investment portfolio</span>. If a channel isn't driving a measurable return,{' '}
                 <span className="text-acid font-medium">we kill it.</span>
               </p>
@@ -913,7 +913,7 @@ export default function Cre8iveHome() {
            <span className="flex items-center gap-16 mx-8">
              <span className="font-light text-2xl text-paper/80 flex items-center gap-4">
                <span className="text-rust">"</span>
-               Cre8ive didn't just run our ads; they became an extension of our executive team. They doubled our inbound leads in 90 days.
+               Cr8ive didn't just run our ads; they became an extension of our executive team. They doubled our inbound leads in 90 days.
                <span className="font-mono text-xs uppercase text-acid ml-4">— Sarah T., CEO at FinTech Flow</span>
              </span>
              <span className="font-light text-2xl text-paper/80 flex items-center gap-4">
@@ -949,8 +949,8 @@ export default function Cre8iveHome() {
               </p>
               
               <div className="space-y-3 mb-10">
-                <a href="mailto:hello@cre8ive.in" className="font-display text-lg md:text-2xl tracking-wide text-ink hover:text-acid transition-colors block underline decoration-acid/30 underline-offset-8">
-                  hello@cre8ive.in
+                <a href="mailto:hello@cr8ive.in" className="font-display text-lg md:text-2xl tracking-wide text-ink hover:text-acid transition-colors block underline decoration-acid/30 underline-offset-8">
+                  hello@cr8ive.in
                 </a>
                 <p className="font-mono text-[10px] md:text-xs text-ink/80 uppercase tracking-[0.2em] font-medium">+91 91234 56789 — Bangalore, IN</p>
               </div>
@@ -1002,8 +1002,8 @@ export default function Cre8iveHome() {
 
       {/* Footer */}
       <footer className="py-12 px-6 md:px-8 lg:px-16 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-8 max-w-7xl mx-auto text-center md:text-left">
-        <div className="font-display text-2xl tracking-widest text-white font-bold">CRE8IVE<span className="text-acid">_</span></div>
-        <div className="font-mono text-[10px] tracking-widest text-paper/40 uppercase max-w-[200px] md:max-w-none">© 2026 Cre8ive. Data-Driven Scaling.</div>
+        <div className="font-display text-2xl tracking-widest text-white font-bold">CR8IVE<span className="text-acid">_</span></div>
+        <div className="font-mono text-[10px] tracking-widest text-paper/40 uppercase max-w-[200px] md:max-w-none">© 2026 Cr8ive. Data-Driven Scaling.</div>
         <div className="flex flex-wrap justify-center gap-6 md:gap-8">
           {['LinkedIn', 'Intelligence', 'Case Studies', 'Terms'].map((link) => (
              <a key={link} href="#" className="font-mono text-[10px] tracking-widest uppercase text-paper/60 hover:text-acid transition-colors relative group">
