@@ -385,7 +385,7 @@ export default function Cr8iveHome() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative min-h-[100dvh] pt-28 pb-16 md:min-h-[90vh] md:pt-20 md:pb-12 px-6 md:px-8 lg:px-16 flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[100dvh] pt-20 pb-0 md:min-h-[90vh] md:pt-20 md:pb-12 px-6 md:px-8 lg:px-16 flex items-center justify-center overflow-hidden">
         {/* Background Atmosphere */}
         <div className="absolute top-1/4 -right-20 w-96 h-96 bg-acid/10 rounded-full mix-blend-screen filter blur-[100px] animate-blob"></div>
         <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-rust/10 rounded-full mix-blend-screen filter blur-[100px] animate-blob animation-delay-2000"></div>
@@ -419,7 +419,7 @@ export default function Cr8iveHome() {
             </div>
           </div>
 
-          <div className="relative h-[340px] sm:h-[400px] md:h-[480px] w-full flex items-center justify-center mt-2 md:mt-8 lg:mt-0">
+          <div className="relative h-[340px] sm:h-[400px] md:h-[480px] w-full flex items-center justify-center mt-[-3rem] md:mt-8 lg:mt-0">
             {/* Premium Interactive Widget */}
             <BorderGlow
               className="relative w-full max-w-[340px] sm:max-w-[420px] md:max-w-[550px] aspect-[1.3/1] sm:aspect-[1.5/1] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden group shadow-2xl border border-white/5"
@@ -488,7 +488,7 @@ export default function Cr8iveHome() {
         </div>
       </section>
 
-      <section id="wedge" className="pt-8 pb-4 md:pt-16 md:pb-8 px-6 md:px-8 lg:px-16 bg-ink text-paper relative overflow-hidden">
+      <section id="wedge" className="pt-4 pb-4 md:pt-16 md:pb-8 px-6 md:px-8 lg:px-16 bg-ink text-paper relative overflow-hidden">
         {/* Background glow */}
         <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-acid/5 rounded-full filter blur-[120px] pointer-events-none" />
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
