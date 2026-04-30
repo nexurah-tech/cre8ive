@@ -179,36 +179,11 @@
   font-style: normal;
 }
 
-/* ─── Custom Scrollbar ─────────────────────────────────────────── */
-
-/* Firefox */
+/* ─── Hide Scrollbar ─────────────────────────────────────────── */
 * {
-  scrollbar-width: thin;
-  scrollbar-color: #EAB308 #0a0a0a;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
-
-/* Chromium / Edge / Safari */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: #0a0a0a;
-  border-radius: 999px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #EAB308;
-  border-radius: 999px;
-  border: 1px solid rgba(0, 0, 0, 0.4);
-  transition: background 0.2s ease;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #f5c842;
-}
-
-::-webkit-scrollbar-corner {
-  background: #0a0a0a;
+  display: none;
 }
