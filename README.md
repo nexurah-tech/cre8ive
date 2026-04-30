@@ -1,54 +1,46 @@
-# Cr8ive_
+# Cr8ive_ // Pre-Launch Sequence
 
 > **Data-Driven Scaling for High-Performance Growth.**
 
-Cre8ive is a premium, high-fidelity marketing agency landing page built for modern performance-driven brands. It features a cinematic, engineering-first aesthetic with real-time data visualizations and sophisticated interactive storytelling.
+Cr8ive is currently in **Pre-Launch Mode**. This repository contains the cinematic launch teaser, the administrative control center, and the underlying growth engineering landing page.
 
-![Cre8ive Preview](public/preview.png)
+![Cre8ive Preview](public/cre8ive-removebg-preview.png)
+
+## 🚀 Active Phase: Sequence Initiated
+
+The root of the application is currently serving the **Cinematic Launch Teaser**, featuring:
+- **Real-Time Countdown**: Synchronized across all users via administrative configuration.
+- **Ultra-Compact UI**: A high-density, system-like dashboard aesthetic.
+- **Lead Capture Queue**: (Optional) Identity capture for early access to the growth arsenal.
+
+## 🛠️ Administrative Dashboard
+
+Authorized operators can manage the launch sequence via the **Secure Admin Portal** (`/admin`):
+- **Temporal Configuration**: Live updates to the global launch window.
+- **System Sync**: Instant propagation of launch dates to the public teaser page via localized state synchronization.
+- **Environment Security**: Protected via `NEXT_PUBLIC_ADMIN_PASSKEY` protocols.
 
 ## ⚡ Tech Stack
 
 - **Framework:** [Next.js 16 (App Router)](https://nextjs.org/)
-- **Styling:** [Tailwind CSS 4](https://tailwindcss.com/)
+- **Styling:** [Vanilla CSS](https://tailwindcss.com/) & [Tailwind CSS 4](https://tailwindcss.com/)
 - **Animations:** [Motion (Framer Motion v12)](https://motion.dev/)
 - **Icons:** [Lucide React](https://lucide.dev/)
-- **Components:** Radix UI primitives
-
-## 🚀 Key Features
-
-### 1. The Acquisition Engine
-A real-time interactive dashboard in the Hero section showcasing live revenue tickers, acquisition metrics, and pulse data visualizations with scanline overlays.
-
-### 2. Market Diagnosis
-A high-density stats section featuring staggered mobile layouts and glass-morphism cards that highlight ROI, Retention, and Ad Spend metrics.
-
-### 3. The Growth Protocol
-A cinematic, staggered reveal of the agency's process ("How We Engineer Growth"), featuring a dynamic vertical progress line that grows as the user scrolls.
-
-### 4. The Growth Ledger
-A curated grid of flagship case studies with premium hover reveals and acid-yellow data highlights.
-
-### 5. The Boardroom Verdict
-A dual-mode testimonial section:
-- **Mobile:** A gesture-driven 3D stack carousel with animated dots.
-- **Desktop:** A high-density authority grid with auto-highlight cycling.
+- **State Sync:** `localStorage` for real-time temporal coordination.
 
 ## 🛠️ Development
 
 ### Installation
-
 ```bash
 npm install
 ```
 
 ### Run Locally
-
 ```bash
 npm run dev
 ```
 
 ### Build for Production
-
 ```bash
 npm run build
 ```
@@ -56,11 +48,11 @@ npm run build
 ## 🎨 Design System
 
 - **Primary Color:** `#EAB308` (Acid Yellow)
-- **Background:** `#000000` (True Black) / `#120F17` (Ink)
+- **Background:** `#000000` (True Black) / `#0a0a0a` (Ink)
 - **Typography:** 
-  - **Display:** High-contrast sans-serif (Inter/Outfit)
-  - **Mono:** Utility-focused monospace for data and labels
+  - **Display:** High-contrast sans-serif (Inter/Bebas Neue)
+  - **Mono:** Space Mono for utility data and system labels
 
 ---
 
-Built with precision by **Cr8ive Engineering**..
+Built with precision by **Cr8ive Engineering**.
