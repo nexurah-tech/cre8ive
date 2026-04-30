@@ -3,8 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { CustomCursor } from '@/components/custom-cursor'
-import { Rocket, Shield, Zap, ArrowRight } from 'lucide-react'
-import { toast } from 'sonner'
+import { Rocket, Shield, Zap } from 'lucide-react'
 
 export default function Home() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
