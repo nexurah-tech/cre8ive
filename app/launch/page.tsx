@@ -1,15 +1,22 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { CustomCursor } from '@/components/custom-cursor'
-import { Rocket, Shield, Zap, ArrowRight } from 'lucide-react'
+import { Rocket, Shield, Zap, ArrowRight, Bell } from 'lucide-react'
 import { toast } from 'sonner'
 
-export default function Home() {
+export default function LaunchTeaserPage() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
+  const [email, setEmail] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [launchDate, setLaunchDate] = useState("2026-06-01T00:00:00")
+  const [currentTime, setCurrentTime] = useState(new Date())
 
+  useEffect(() => {
+    const timer = setInterval(() => setCurrentTime(new Date()), 1000)
+    return () => clearInterval(timer)
+  }, [])
 
   useEffect(() => {
     // Sync with admin configuration
@@ -40,6 +47,15 @@ export default function Home() {
     return () => clearInterval(timer)
   }, [launchDate])
 
+  const handleNotify = (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setTimeout(() => {
+      toast.success("Identity captured. You're on the list.")
+      setEmail('')
+      setIsSubmitting(false)
+    }, 1500)
+  }
 
   return (
     <main className="min-h-screen bg-ink text-paper relative overflow-hidden flex flex-col items-center justify-center px-6 selection:bg-acid selection:text-ink">
@@ -60,14 +76,17 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           className="mb-12 flex flex-col items-center gap-4"
         >
-          <img 
-            src="/cre8ive-removebg-preview.png" 
-            alt="CR8IVE" 
-            className="h-20 md:h-28 w-auto invert brightness-0 invert-[1] grayscale" 
-          />
           <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/[0.03] border border-white/5 backdrop-blur-md">
             <Rocket className="w-4 h-4 text-acid" />
             <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-acid">Sequence Initiated // CR8IVE v2.0</span>
+          </div>
+          <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-paper/30 flex items-center gap-4">
+            <span className="flex items-center gap-2">
+              <span className="w-1 h-1 rounded-full bg-acid animate-pulse"></span>
+              SYS_NOW: {currentTime.toLocaleTimeString()}
+            </span>
+            <span className="opacity-20">|</span>
+            <span>TGT_CFG: {new Date(launchDate).toLocaleString()}</span>
           </div>
         </motion.div>
 
@@ -75,7 +94,7 @@ export default function Home() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="font-display text-4xl md:text-6xl text-white tracking-tighter leading-[0.95] mb-6"
+          className="font-display text-5xl md:text-8xl text-white tracking-tighter leading-[0.9] mb-8"
         >
           Something <span className="text-acid italic">Legendary</span> <br/>
           is Preparing for Launch.
@@ -85,13 +104,13 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="text-paper/40 text-sm md:text-base font-light max-w-xl mb-12 leading-relaxed"
+          className="text-paper/40 text-lg md:text-xl font-light max-w-2xl mb-20 leading-relaxed"
         >
           We&apos;re re-engineering the digital growth landscape. The next generation of acquisition engines is arriving shortly.
         </motion.p>
 
         {/* Countdown Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 mb-12 w-full max-w-2xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mb-24 w-full">
           {[
             { label: 'Days', val: timeLeft.days },
             { label: 'Hours', val: timeLeft.hours },
@@ -105,16 +124,46 @@ export default function Home() {
               transition={{ delay: 0.5 + (i * 0.1) }}
               className="relative group"
             >
-              <div className="glass-panel bg-white/[0.02] border border-white/5 rounded-2xl p-4 md:p-6 transition-all duration-500 group-hover:border-acid/20">
-                <div className="font-display text-3xl md:text-5xl text-white mb-1 tracking-tighter group-hover:text-acid transition-colors">
+              <div className="glass-panel bg-white/[0.02] border border-white/5 rounded-3xl p-8 md:p-10 transition-all duration-500 group-hover:border-acid/20">
+                <div className="font-display text-5xl md:text-7xl text-white mb-2 tracking-tighter group-hover:text-acid transition-colors">
                   {unit.val.toString().padStart(2, '0')}
                 </div>
-                <div className="font-mono text-[8px] uppercase tracking-[0.4em] text-paper/20">{unit.label}</div>
+                <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-paper/20">{unit.label}</div>
               </div>
             </motion.div>
           ))}
         </div>
 
+        {/* CTA Section */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1 }}
+          className="w-full max-w-md"
+        >
+          <p className="font-mono text-[9px] uppercase tracking-[0.3em] text-paper/30 mb-6">Gain Early Access to the Arsenal</p>
+          <form onSubmit={handleNotify} className="relative group">
+            <input 
+              type="email" 
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your terminal address..."
+              className="w-full bg-white/[0.03] border border-white/10 rounded-2xl py-5 pl-6 pr-40 text-white placeholder:text-paper/10 focus:outline-none focus:border-acid/40 focus:bg-white/[0.05] transition-all font-sans"
+            />
+            <button 
+              type="submit"
+              disabled={isSubmitting}
+              className="absolute right-2 top-2 bottom-2 bg-acid text-ink font-mono text-[10px] font-bold uppercase tracking-widest px-8 rounded-xl hover:bg-white transition-all flex items-center gap-2 disabled:opacity-50"
+            >
+              {isSubmitting ? "Syncing..." : (
+                <>
+                  Join Queue <ArrowRight className="w-3 h-3" />
+                </>
+              )}
+            </button>
+          </form>
+        </motion.div>
       </div>
 
       {/* Footer Branding */}
@@ -131,11 +180,7 @@ export default function Home() {
         
         <div className="flex items-center gap-6">
           <Zap className="w-5 h-5 text-acid animate-pulse" />
-          <img 
-            src="/cre8ive-removebg-preview.png" 
-            alt="CR8IVE" 
-            className="h-10 w-auto invert brightness-0 invert-[1] grayscale" 
-          />
+          <div className="font-display text-xl text-white tracking-tighter">CR8IVE</div>
         </div>
       </div>
     </main>

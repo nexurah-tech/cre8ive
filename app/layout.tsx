@@ -11,8 +11,8 @@ export const metadata: Metadata = {
   title: 'CR8IVE - Digital Growth Agency',
   description: 'Data-driven creative strategy to grow your brand 8X faster. Performance marketing that delivers real results.',
   icons: {
-    icon: '/favicon.png',
-    apple: '/favicon.png',
+    icon: '/cre8ive-removebg-preview.png',
+    apple: '/cre8ive-removebg-preview.png',
   },
 }
 
