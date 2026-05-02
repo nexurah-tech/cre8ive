@@ -10,7 +10,7 @@ import {
   Search, Zap, Share2, FileText, Mail, Target, Laptop, BarChart3, 
   Users, Link2, Shield, Palette, Play, Cpu, MousePointer2, 
   ShoppingBag, Smartphone, MapPin, Layers, MessageSquare,
-  TrendingUp, ChevronDown, ChevronUp, Quote
+  TrendingUp, ChevronDown, ChevronUp, Quote, ArrowUpRight, ExternalLink
 } from 'lucide-react'
 
 const AnimatedNumber = ({ value, prefix = "", suffix = "", decimals = 0 }: { value: number, prefix?: string, suffix?: string, decimals?: number }) => {
@@ -320,51 +320,32 @@ const CustomSelect = ({ label, options, placeholder }: { label: string, options:
 }
 
 export default function Cr8iveHome() {
-  const [activeCase, setActiveCase] = useState(0)
   const [expanded, setExpanded] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
-  const [isPaused, setIsPaused] = useState(false)
 
   const FLAGSHIP_CASES = [
     {
-      vertical: "Fintech / Neo-Banking",
-      title: "Scaling Inbound Acquisition by 412% in 180 Days.",
-      challenge: "Client was burning ₹45 Lakhs/mo on broad Meta targeting with a stagnating CAC of ₹4,200 and poor lead quality.",
-      strategy: "Implemented an Intent-First SEO cluster strategy combined with hyper-segmented Google Search Ads.",
-      metrics: { m1: "₹12 Cr+", m2: "₹1,150", m3: "8.4x" },
-      labels: { l1: "New MRR", l2: "Blended CAC", l3: "LTV:CAC Ratio" },
-      img: "/case_1.png",
-      accent: "acid"
+      title: "Evergreen Farms — Premium Managed Farmland Real Estate",
+      desc: "Developed a high-end digital presence for Evergreen Farms, featuring immersive property showcases and an automated lead capture system for premium farmland investments.",
+      country: "India",
+      industry: "Real Estate",
+      category: "Digital Growth",
+      img: "/assets/projects/farm-land/Screenshot 2026-05-02 183526.png",
+      accent: "#10b981",
+      link: "https://farm-landing-ebon.vercel.app/"
     },
     {
-      vertical: "E-commerce / D2C",
-      title: "Scaling a Skincare Brand to ₹25 Cr Annual Revenue.",
-      challenge: "Stuck at ₹5 Lakhs MRR with 1.2x ROAS. High cart abandonment and low repeat customer rate.",
-      strategy: "Retention-first email flows + Advantage+ Meta scaling + High-intent Google Shopping.",
-      metrics: { m1: "18.5x", m2: "74%", m3: "₹2.2 Cr" },
-      labels: { l1: "Peak ROAS", l2: "Retention Jump", l3: "Avg Monthly Rev" },
-      img: "/case_2.png",
-      accent: "acid"
-    },
-    {
-      vertical: "SaaS / Enterprise",
-      title: "Driving ₹8 Cr in Pipeline for an AI Cloud Platform.",
-      challenge: "Enterprise leads were costing ₹12,000 each with a 2% MQL to SQL conversion rate.",
-      strategy: "ABM (Account Based Marketing) on LinkedIn + Technical Content Clusters for SEO dominance.",
-      metrics: { m1: "₹2,400", m2: "14%", m3: "320+" },
-      labels: { l1: "CPL Reduction", l2: "SQL Conv Rate", l3: "F500 Leads" },
-      img: "/case_3.png",
-      accent: "acid"
+      title: "Dr. RRB — Medical Excellence & Patient Acquisition",
+      desc: "Built India's leading pain management digital identity for Dr. RRB, combining technical SEO dominance with a high-converting liquid-glass patient funnel.",
+      country: "India",
+      industry: "Healthcare",
+      category: "Digital Transformation",
+      img: "/assets/projects/drrrb/Screenshot 2026-04-29 093512.png",
+      accent: "#EAB308",
+      link: "https://drrrbpaincare.com/"
     }
   ]
 
-  useEffect(() => {
-    if (isPaused) return
-    const interval = setInterval(() => {
-      setActiveCase((prev) => (prev === FLAGSHIP_CASES.length - 1 ? 0 : prev + 1))
-    }, 4000)
-    return () => clearInterval(interval)
-  }, [FLAGSHIP_CASES.length, isPaused])
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 640)
@@ -382,113 +363,230 @@ export default function Cr8iveHome() {
 
       <CustomCursor />
 
+      {/* Global Ambient Glows */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-acid/10 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute top-[20%] -right-[5%] w-[35%] h-[35%] bg-acid/5 rounded-full blur-[100px]" />
+        <div className="absolute bottom-[10%] left-[20%] w-[40%] h-[40%] bg-acid/5 rounded-full blur-[130px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] bg-acid/[0.03] rounded-full blur-[150px]" />
+      </div>
+
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative min-h-[100dvh] pt-20 pb-0 md:min-h-[90vh] md:pt-20 md:pb-12 px-6 md:px-8 lg:px-16 flex items-center justify-center overflow-hidden">
-        {/* Background Atmosphere */}
-        <div className="absolute top-1/4 -right-20 w-96 h-96 bg-acid/10 rounded-full mix-blend-screen filter blur-[100px] animate-blob"></div>
-        <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-rust/10 rounded-full mix-blend-screen filter blur-[100px] animate-blob animation-delay-2000"></div>
+      <section className="relative min-h-[100dvh] flex items-start lg:items-center overflow-hidden">
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-16 items-center max-w-7xl mx-auto w-full relative z-10">
+        {/* ── Background atmosphere ──────────────────────────────── */}
+        {/* Radial bloom from top-right — where the widget lives */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_75%_20%,rgba(234,179,8,0.07)_0%,transparent_65%)] pointer-events-none" />
+        {/* Left warm undertone */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_45%_70%_at_5%_60%,rgba(224,75,26,0.04)_0%,transparent_60%)] pointer-events-none" />
+        {/* Additional golden depth */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(234,179,8,0.03)_0%,transparent_50%)] pointer-events-none" />
+        {/* Fine grid */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage: 'linear-gradient(rgba(242,237,230,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(242,237,230,0.035) 1px,transparent 1px)',
+            backgroundSize: '64px 64px',
+          }}
+        />
+        {/* Animated orbs */}
+        <div className="absolute top-1/4 right-1/3 w-[480px] h-[480px] bg-acid/[0.07] rounded-full mix-blend-screen filter blur-[130px] animate-blob pointer-events-none" />
+        <div className="absolute top-1/2 right-8 w-[280px] h-[280px] bg-rust/[0.06] rounded-full mix-blend-screen filter blur-[100px] animate-blob animation-delay-2000 pointer-events-none" />
+        {/* Subtle horizontal scan */}
+        <div className="absolute top-[38%] left-0 right-0 h-px bg-gradient-to-r from-transparent via-acid/10 to-transparent pointer-events-none" />
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center max-w-7xl mx-auto w-full relative z-10 px-4 md:px-8 lg:px-16 pt-32 pb-20 lg:pt-10 lg:pb-0">
           <div className="pr-4 lg:pr-12">
-            <div className="font-mono text-xs tracking-widest uppercase text-acid mb-6 flex items-center gap-3">
-              <span className="inline-block w-8 h-[2px] bg-acid"></span>
-              DON&apos;T PAY FOR PROMISES. PAY FOR PERFORMANCE.
+            <div className="font-mono text-[10px] md:text-xs tracking-[0.1em] md:tracking-widest uppercase text-acid mb-6 flex items-start gap-2 md:gap-3">
+              <span className="inline-block w-5 md:w-8 h-[1.5px] md:h-[2px] bg-acid mt-1.5 md:mt-2 shrink-0"></span>
+              <span className="leading-tight">DON&apos;T PAY FOR PROMISES. PAY FOR PERFORMANCE.</span>
             </div>
-            
-            <h1 className="font-display text-3xl md:text-4xl lg:text-6xl leading-[0.95] tracking-tighter mb-4 text-white">
-              Stop <span className="text-paper/40 italic pr-2">Guessing.</span> <br/>
-              Start <span className="text-acid">Scaling.</span>
-            </h1>
-            
-            <p className="text-base md:text-xl leading-relaxed text-paper/70 max-w-lg mb-6 font-light border-l-4 border-l-acid pl-6">
-              We engineer data-driven acquisition engines that systematically turn strangers into high-LTV customers. No vanity metrics. <strong className="text-white">Just predictable revenue.</strong>
-            </p>
-            
-            <div className="flex flex-wrap items-center gap-6">
-              <button className="font-mono text-xs tracking-wider uppercase bg-acid text-ink px-8 py-4 rounded-full hover:bg-white transition-all duration-300 font-bold shadow-lg shadow-acid/10">
+
+            {/* Headline */}
+            <motion.h1
+              initial={{ opacity: 0, y: 22 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+              className="font-unbounded text-[clamp(2.4rem,5.5vw,5rem)] leading-[0.95] tracking-tight text-white mb-8 drop-shadow-[0_0_20px_rgba(234,179,8,0.15)]"
+            >
+              Stop{' '}
+              <span className="font-serif italic font-normal text-paper/35">Guessing.</span>
+              <br />
+              Start{' '}
+              <span className="text-acid">Scaling.</span>
+            </motion.h1>
+
+            {/* Body */}
+            <motion.p
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
+              className="text-base md:text-lg leading-relaxed text-paper/65 max-w-md font-light border-l-2 border-acid/40 pl-5 mb-10"
+            >
+              We engineer data-driven acquisition engines that systematically turn strangers into high-LTV customers.
+              No vanity metrics.{' '}
+              <strong className="text-white font-medium">Just predictable revenue.</strong>
+            </motion.p>
+
+            {/* CTAs */}
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.24, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-wrap items-center gap-4"
+            >
+              <button className="group font-mono text-[10px] tracking-wider uppercase bg-acid text-ink px-7 py-3.5 rounded-full font-bold shadow-[0_0_30px_rgba(234,179,8,0.3)] hover:shadow-[0_0_50px_rgba(234,179,8,0.5)] hover:bg-white transition-all duration-300 flex items-center gap-2">
                 Request Growth Audit
+                <ArrowUpRight size={13} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
               </button>
-              <a href="#vault" className="group font-mono text-xs tracking-widest uppercase text-paper/60 hover:text-white transition-colors flex items-center gap-3 p-4">
+              <a href="#vault" className="group font-mono text-[10px] tracking-widest uppercase text-paper/50 hover:text-white transition-colors duration-200 flex items-center gap-3">
                 See the Evidence
-                <span className="w-8 h-8 rounded-full border border-paper/20 flex items-center justify-center group-hover:border-white transition-all">
-                  ↓
-                </span>
+                <span className="w-7 h-7 rounded-full border border-paper/15 flex items-center justify-center group-hover:border-paper/40 group-hover:bg-white/5 transition-all text-[10px]">↓</span>
               </a>
-            </div>
+            </motion.div>
+
+            {/* Trust bar */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="flex flex-wrap items-center gap-x-5 gap-y-2 pt-5 border-t border-white/[0.06]"
+            >
+              <div className="flex items-center gap-2.5">
+                <div className="flex -space-x-2">
+                  {['/testimonial_1.png', '/testimonial_2.png', '/testimonial_3.png'].map((src, i) => (
+                    <div key={i} className="w-6 h-6 rounded-full border border-ink overflow-hidden ring-1 ring-white/10">
+                      <img src={src} alt="" className="w-full h-full object-cover grayscale" />
+                    </div>
+                  ))}
+                </div>
+                <span className="font-mono text-[9px] uppercase text-paper/35 tracking-wider">200+ clients</span>
+              </div>
+              <div className="w-px h-3 bg-white/10 hidden sm:block" />
+              <span className="font-mono text-[9px] uppercase text-paper/35 tracking-wider hidden sm:block">₹1000 Cr+ managed</span>
+              <div className="w-px h-3 bg-white/10 hidden sm:block" />
+              <span className="font-mono text-[9px] uppercase text-paper/35 tracking-wider hidden sm:block">98% retention</span>
+            </motion.div>
           </div>
 
-          <div className="relative h-[340px] sm:h-[400px] md:h-[480px] w-full flex items-center justify-center mt-[-3rem] md:mt-8 lg:mt-0">
-            {/* Premium Interactive Widget */}
+          {/* ── Right: Widget ─────────────────────────────────── */}
+          <motion.div
+            initial={{ opacity: 0, y: 28, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.85, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
+            className="relative flex items-center justify-center lg:justify-end"
+          >
+            {/* Floating badge — top left */}
+            <div className="absolute -top-3 left-4 lg:-left-6 z-20 hidden sm:flex items-center gap-2 px-3 py-2 rounded-xl bg-[#0e0e0e] border border-white/10 shadow-2xl backdrop-blur-xl">
+              <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="font-mono text-[8px] uppercase tracking-widest text-paper/55">3 Campaigns Live</span>
+            </div>
+
+            {/* Floating badge — bottom right */}
+            <div className="absolute -bottom-3 right-4 lg:-right-6 z-20 hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-xl bg-acid shadow-lg shadow-acid/25">
+              <TrendingUp size={10} className="text-ink" strokeWidth={2.5} />
+              <span className="font-mono text-[8px] uppercase tracking-widest text-ink font-bold">+312% MoM</span>
+            </div>
+
             <BorderGlow
-              className="relative w-full max-w-[340px] sm:max-w-[420px] md:max-w-[550px] aspect-[1.3/1] sm:aspect-[1.5/1] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden group shadow-2xl border border-white/5"
+              className="relative w-full max-w-[400px] md:max-w-[460px] rounded-2xl overflow-hidden border border-white/5 shadow-[0_32px_80px_rgba(0,0,0,0.6),0_0_40px_rgba(234,179,8,0.1)]"
               backgroundColor="#080808"
               glowColor="45 93 47"
+              glowIntensity={1.2}
               colors={['#EAB308', '#FDE047', '#CA8A04']}
             >
-              {/* Background Layer */}
+              {/* BG image */}
               <div className="absolute inset-0 z-0">
-                <img 
-                  src="/cre8ive_hero_graphic_1776790355718.png" 
-                  alt="Cr8ive Digital Growth" 
-                  className="w-full h-full object-cover opacity-30 group-hover:opacity-50 group-hover:scale-110 transition-all duration-1000 grayscale group-hover:grayscale-0"
+                <img
+                  src="/digital_marketing_hero.png?v=2"
+                  alt="Digital Marketing Analytics Dashboard"
+                  className="w-full h-full object-cover opacity-[0.4]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/60"></div>
-                {/* Tech scanlines */}
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.02),rgba(0,255,0,0.01),rgba(0,0,255,0.02))] bg-[length:100%_2px,3px_100%] pointer-events-none opacity-20"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-[#080808]/85 to-[#080808]/50" />
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0)_50%,rgba(0,0,0,0.08)_50%)] bg-[length:100%_3px] pointer-events-none opacity-15" />
               </div>
-              
-              <div className="relative z-10 h-full p-5 sm:p-7 md:p-8 flex flex-col justify-between">
-                <div className="flex justify-between items-start">
+
+              <div className="relative z-10 p-6 md:p-7 flex flex-col gap-5">
+
+                {/* Header */}
+                <div className="flex items-start justify-between">
                   <div>
-                    <div className="font-mono text-[9px] tracking-[0.3em] text-acid mb-1 uppercase font-bold">Acquisition Engine</div>
-                    <div className="font-mono text-[8px] tracking-widest text-paper/30 uppercase">System: v2.4.8 // Active</div>
+                    <div className="font-mono text-[8px] tracking-[0.3em] uppercase text-acid mb-0.5">Acquisition Engine</div>
+                    <div className="font-mono text-[7px] tracking-widest text-paper/25 uppercase">v2.4.8 // Active</div>
                   </div>
-                  <div className="px-2 py-1 rounded-md bg-acid/10 border border-acid/20 flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 bg-acid rounded-full animate-pulse shadow-[0_0_8px_rgba(234,179,8,1)]"></div>
-                    <span className="font-mono text-[8px] text-acid font-bold tracking-widest">LIVE DATA</span>
-                  </div>
-                </div>
-
-                <div className="my-auto py-4">
-                  <div className="font-mono text-[10px] tracking-[0.2em] text-paper/40 mb-2 uppercase">Revenue Generated</div>
-                  <div className="font-display text-2xl sm:text-3xl md:text-4xl xl:text-5xl tracking-tighter text-white group-hover:text-acid transition-colors duration-500">
-                    <span className="text-base sm:text-xl md:text-2xl mr-1 font-sans text-paper/50">₹</span>14,29,18,<span className="animate-pulse">842</span>
+                  <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-acid/10 border border-acid/20">
+                    <div className="w-1.5 h-1.5 rounded-full bg-acid animate-pulse shadow-[0_0_6px_rgba(234,179,8,1)]" />
+                    <span className="font-mono text-[7px] uppercase text-acid tracking-widest font-bold">Live Data</span>
                   </div>
                 </div>
 
+                {/* Revenue */}
+                <div>
+                  <div className="font-mono text-[8px] tracking-[0.2em] uppercase text-paper/30 mb-2">Revenue Generated</div>
+                  <div className="font-display text-[2.2rem] md:text-[2.6rem] tracking-tighter text-white leading-none">
+                    <span className="text-xl text-paper/35 font-sans mr-0.5">₹</span>
+                    14,29,18,<span className="text-acid animate-pulse">842</span>
+                  </div>
+                  <div className="mt-3 flex items-center gap-2.5">
+                    <div className="h-[3px] flex-1 rounded-full bg-white/[0.06] overflow-hidden">
+                      <div className="h-full w-[78%] bg-gradient-to-r from-acid/60 to-acid rounded-full" />
+                    </div>
+                    <span className="font-mono text-[7px] text-acid/55 uppercase tracking-wider shrink-0">78% of target</span>
+                  </div>
+                </div>
+
+                {/* Stat cards */}
                 <div className="grid grid-cols-2 gap-3">
-                  <div className="glass-panel border border-white/5 bg-white/[0.03] backdrop-blur-xl rounded-xl md:rounded-2xl p-2.5 md:p-3 flex items-center gap-3 md:gap-4 group/card transition-all hover:bg-white/[0.06] hover:border-acid/40">
-                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-white/[0.03] flex items-center justify-center border border-white/5 group-hover/card:border-acid/20 transition-colors">
-                      <TrendingUp size={14} className="text-acid/60 md:size-[18px] group-hover/card:text-acid transition-colors" />
-                    </div>
-                    <div>
-                      <div className="font-mono text-[7px] md:text-[8px] text-paper/30 uppercase tracking-[0.1em] mb-0.5">ROAS</div>
-                      <div className="font-display text-lg md:text-xl lg:text-2xl text-white group-hover/card:text-acid transition-colors leading-none">6.4x</div>
-                    </div>
-                  </div>
-                  
-                  <div className="glass-panel border border-white/5 bg-white/[0.03] backdrop-blur-xl rounded-xl md:rounded-2xl p-2.5 md:p-3 flex items-center gap-3 md:gap-4 group/card transition-all hover:bg-white/[0.06] hover:border-acid/40">
-                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-white/[0.03] flex items-center justify-center border border-white/5 group-hover/card:border-acid/20 transition-colors">
-                      <Zap size={14} className="text-acid/60 md:size-[18px] group-hover/card:text-acid transition-colors" />
-                    </div>
-                    <div>
-                      <div className="font-mono text-[7px] md:text-[8px] text-paper/30 uppercase tracking-[0.1em] mb-0.5">LIVE</div>
-                      <div className="flex items-baseline gap-2">
-                        <div className="font-display text-lg md:text-xl lg:text-2xl text-white group-hover/card:text-acid transition-colors leading-none">124</div>
-                        <div className="font-mono text-[6px] md:text-[7px] text-acid font-bold animate-pulse">+312%</div>
+                  {[
+                    { icon: TrendingUp, label: 'ROAS', value: '6.4x', delta: '+0.8x wk' },
+                    { icon: Zap, label: 'Live Leads', value: '124', delta: '+312%' },
+                  ].map(({ icon: Icon, label, value, delta }) => (
+                    <div key={label} className="rounded-xl bg-white/[0.03] border border-white/[0.06] p-3 flex flex-col gap-2 hover:border-acid/25 transition-colors duration-300">
+                      <div className="flex items-center justify-between">
+                        <span className="font-mono text-[7px] uppercase tracking-widest text-paper/30">{label}</span>
+                        <Icon size={10} className="text-acid/40" strokeWidth={1.5} />
                       </div>
+                      <div className="font-display text-2xl text-white leading-none">{value}</div>
+                      <div className="font-mono text-[6px] uppercase text-acid/50 tracking-wider">{delta}</div>
                     </div>
+                  ))}
+                </div>
+
+                {/* Channel breakdown */}
+                <div className="pt-1 border-t border-white/[0.06]">
+                  <div className="font-mono text-[7px] uppercase tracking-widest text-paper/20 mb-3">Top Channels</div>
+                  <div className="space-y-2.5">
+                    {[
+                      { ch: 'Google Search', pct: 42, color: 'bg-acid' },
+                      { ch: 'Meta Advantage+', pct: 31, color: 'bg-rust' },
+                      { ch: 'SEO Organic', pct: 27, color: 'bg-paper/35' },
+                    ].map(({ ch, pct, color }) => (
+                      <div key={ch} className="flex items-center gap-3">
+                        <span className="font-mono text-[7px] text-paper/30 w-24 shrink-0 truncate">{ch}</span>
+                        <div className="flex-1 h-[2px] bg-white/[0.05] rounded-full overflow-hidden">
+                          <div className={`h-full ${color} rounded-full`} style={{ width: `${pct}%` }} />
+                        </div>
+                        <span className="font-mono text-[7px] text-paper/30 w-5 text-right shrink-0">{pct}%</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
+
               </div>
             </BorderGlow>
-          </div>
+          </motion.div>
+        </div>
+
+        {/* Scroll cue */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none">
+          <div className="w-px h-10 bg-gradient-to-b from-paper/20 to-transparent" />
+          <span className="font-mono text-[7px] uppercase tracking-[0.3em] text-paper/25">Scroll</span>
         </div>
       </section>
 
-      <section id="wedge" className="pt-4 pb-4 md:pt-16 md:pb-8 px-6 md:px-8 lg:px-16 bg-ink text-paper relative overflow-hidden">
+      <section id="wedge" className="pt-4 pb-4 md:pt-16 md:pb-8 px-4 md:px-8 lg:px-16 bg-ink text-paper relative overflow-hidden">
         {/* Background glow */}
         <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-acid/5 rounded-full filter blur-[120px] pointer-events-none" />
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
@@ -496,7 +594,7 @@ export default function Cr8iveHome() {
 
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Header label */}
-          <div className="font-mono text-[10px] tracking-[0.4em] uppercase text-acid mb-6 flex items-center justify-center lg:justify-start gap-3">
+          <div className="font-mono text-[10px] tracking-[0.2em] md:tracking-[0.4em] uppercase text-acid mb-6 flex flex-wrap items-center justify-center lg:justify-start gap-3">
             <span className="w-6 h-px bg-acid/50" />
             Market Diagnosis
             <span className="w-6 h-px bg-acid/50" />
@@ -508,7 +606,7 @@ export default function Cr8iveHome() {
             <div className="text-center lg:text-left">
               <h2 className="font-display text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.05] text-balance text-white">
                 Most agencies are<br />selling you{' '}
-                <span className="text-acid italic">noise.</span>
+                <span className="font-serif italic font-normal text-acid">noise.</span>
               </h2>
             </div>
 
@@ -530,68 +628,18 @@ export default function Cr8iveHome() {
           </div>
 
           {/* Proof Point Bar */}
-          <div className="mt-8">
-            {/* Desktop View — Clean Bar Design */}
-            <div className="hidden md:flex border border-white/5 rounded-2xl bg-white/[0.02] py-7 px-8 items-center justify-between gap-12">
-              <div className="text-center md:text-left">
-                <div className="font-display text-3xl md:text-4xl mb-1 text-white">
-                  <AnimatedNumber value={1000} prefix="₹" suffix=" Cr+" />
-                </div>
-                <div className="font-mono text-[10px] tracking-widest text-paper/40 uppercase">Ad Spend Managed</div>
-              </div>
-              <div className="w-px h-12 bg-white/10" />
-              <div className="text-center">
-                <div className="font-display text-3xl md:text-4xl mb-1 text-acid">
-                  <AnimatedNumber value={3.4} decimals={1} suffix="x" />
-                </div>
-                <div className="font-mono text-[10px] tracking-widest text-paper/40 uppercase">Average ROI Baseline</div>
-              </div>
-              <div className="w-px h-12 bg-white/10" />
-              <div className="text-center md:text-right">
-                <div className="font-display text-3xl md:text-4xl mb-1 text-white">
-                  <AnimatedNumber value={98} suffix="%" />
-                </div>
-                <div className="font-mono text-[10px] tracking-widest text-paper/40 uppercase">Client Retention</div>
-              </div>
-            </div>
 
-            {/* Mobile View — Premium Staggered Stats */}
-            <div className="grid grid-cols-2 gap-3 md:hidden">
-              <div className="col-span-2 glass-panel border border-white/10 bg-white/5 rounded-3xl p-6 text-center relative overflow-hidden group">
-                <div className="absolute -top-12 -right-12 w-32 h-32 bg-white/5 rounded-full blur-3xl group-hover:bg-acid/10 transition-colors" />
-                <div className="font-display text-4xl mb-1 text-white">
-                  <AnimatedNumber value={1000} prefix="₹" suffix=" Cr+" />
-                </div>
-                <div className="font-mono text-[9px] tracking-[0.2em] text-paper/40 uppercase">Ad Spend Managed</div>
-              </div>
-              
-              <div className="glass-panel border border-acid/20 bg-acid/5 rounded-2xl py-4 px-3 text-center flex flex-col justify-center relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-acid/10 to-transparent" />
-                <div className="font-display text-2xl mb-1 text-acid">
-                  <AnimatedNumber value={3.4} decimals={1} suffix="x" />
-                </div>
-                <div className="font-mono text-[8px] tracking-widest text-acid/60 uppercase">Avg ROI</div>
-              </div>
-
-              <div className="glass-panel border border-white/10 bg-white/5 rounded-2xl py-4 px-3 text-center flex flex-col justify-center">
-                <div className="font-display text-2xl mb-1 text-white">
-                  <AnimatedNumber value={98} suffix="%" />
-                </div>
-                <div className="font-mono text-[8px] tracking-widest text-paper/40 uppercase">Retention</div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
       {/* The Arsenal (Services / Bento Grid) */}
-      <section id="arsenal" className="pt-16 pb-16 md:pt-32 md:pb-24 px-6 md:px-8 lg:px-16 max-w-7xl mx-auto">
+      <section id="arsenal" className="pt-16 pb-16 md:pt-32 md:pb-24 px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
         <div className="mb-12 md:mb-20">
-          <div className="font-mono text-[10px] tracking-widest uppercase text-acid mb-4 flex items-center gap-3">
+          <div className="font-mono text-[10px] tracking-[0.2em] md:tracking-widest uppercase text-acid mb-4 flex flex-wrap items-center gap-3">
             <span className="w-6 h-px bg-acid"></span> 
             The Arsenal
           </div>
-          <h2 className="font-display text-3xl md:text-5xl lg:text-6xl leading-none tracking-tighter">Growth <span className="text-paper/30 italic">Infrastructure</span></h2>
+          <h2 className="font-display text-3xl md:text-5xl lg:text-6xl leading-none tracking-tighter">Growth <span className="font-serif italic font-normal text-paper/30">Infrastructure</span></h2>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 relative z-10">
@@ -643,10 +691,10 @@ export default function Cr8iveHome() {
         <div className="absolute top-0 right-0 w-[1000px] h-[1000px] bg-acid/10 rounded-full filter blur-[150px] pointer-events-none opacity-20"></div>
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full filter blur-[100px] pointer-events-none"></div>
 
-        <div className="px-8 lg:px-16 max-w-7xl mx-auto mb-10 md:mb-16 relative z-10">
+        <div className="px-4 md:px-8 lg:px-16 max-w-7xl mx-auto mb-10 md:mb-16 relative z-10">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
             <div className="max-w-2xl">
-              <div className="font-mono text-xs tracking-[0.3em] uppercase text-acid mb-3">Execution Logs</div>
+              <div className="font-mono text-[10px] md:text-xs tracking-[0.2em] md:tracking-[0.3em] uppercase text-acid mb-3">Execution Logs</div>
               <h2 className="font-display text-5xl md:text-7xl leading-[0.95] tracking-tighter text-white">Hard Data.<br/><span className="text-paper/20">No Fluff.</span></h2>
             </div>
             <p className="text-paper/40 font-light max-w-xs text-sm leading-relaxed mb-2">
@@ -655,95 +703,66 @@ export default function Cr8iveHome() {
           </div>
         </div>
 
-        {/* Dynamic Flagship Slider: Strong Focus */}
-        <div className="px-6 md:px-8 lg:px-16 max-w-5xl mx-auto mb-16 md:mb-20 relative z-10">
-          <div className="relative group/slider" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
-            <div className="glass-panel bg-white/5 border border-white/10 rounded-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-2 animate-in fade-in zoom-in-95 duration-700" key={activeCase}>
-              <div className="relative h-[200px] md:h-[240px] lg:h-auto overflow-hidden">
+        {/* Static Grid of Case Studies */}
+        <div className="px-4 md:px-8 lg:px-16 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 relative z-10">
+          {FLAGSHIP_CASES.map((project, i) => (
+            <div key={i} className="group bg-[#151515] border border-white/5 rounded-[20px] overflow-hidden flex flex-col shadow-2xl transition-all hover:border-white/10">
+              {/* Image Area */}
+              <div className="aspect-[21/9] overflow-hidden relative">
                 <img 
-                  src={FLAGSHIP_CASES[activeCase].img} 
-                  alt={FLAGSHIP_CASES[activeCase].title} 
-                  className="w-full h-full object-cover grayscale brightness-75 hover:grayscale-0 transition-all duration-1000 scale-105"
+                  src={project.img} 
+                  alt={project.title} 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-all duration-[2000ms] ease-out"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-ink/80 via-transparent to-transparent hidden lg:block"></div>
-                <div className="absolute top-4 left-4">
-                  <div className={`bg-${FLAGSHIP_CASES[activeCase].accent} text-ink font-mono text-[8px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-[0.2em] shadow-lg`}>
-                    Case 0{activeCase + 1}
-                  </div>
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#151515] via-transparent to-transparent opacity-60"></div>
+                
               </div>
-              
-              <div className="p-5 md:p-7 lg:p-9 flex flex-col justify-center bg-ink/80 backdrop-blur-md">
-                <div className={`font-mono text-[8px] tracking-widest uppercase text-${FLAGSHIP_CASES[activeCase].accent} mb-3`}>{FLAGSHIP_CASES[activeCase].vertical}</div>
-                <h3 className="font-display text-lg md:text-2xl lg:text-3xl text-white mb-5 leading-[1.1] tracking-tighter">
-                  {FLAGSHIP_CASES[activeCase].title}
-                </h3>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
-                  <div className="space-y-1.5">
-                    <div className="font-mono text-[8px] uppercase text-paper/30 tracking-widest">Problem</div>
-                    <p className="text-[11px] text-paper/50 font-light leading-relaxed italic">
-                      "{FLAGSHIP_CASES[activeCase].challenge}"
-                    </p>
-                  </div>
-                  <div className="space-y-1.5">
-                    <div className={`font-mono text-[8px] uppercase text-${FLAGSHIP_CASES[activeCase].accent} tracking-widest`}>Fix</div>
-                    <p className="text-[11px] text-paper/60 font-light leading-relaxed">
-                      {FLAGSHIP_CASES[activeCase].strategy}
-                    </p>
-                  </div>
+
+              {/* Content Area */}
+              <div className="p-6 flex flex-col flex-1">
+                <div className="flex items-start justify-between gap-4 mb-3">
+                  <h3 className="font-display text-lg md:text-xl text-white leading-snug group-hover:text-acid transition-colors">
+                    {project.title}
+                  </h3>
+                  <a 
+                    href={project.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-paper/40 hover:text-ink hover:bg-acid hover:border-acid transition-all duration-300"
+                  >
+                    <ArrowUpRight className="w-5 h-5" />
+                  </a>
                 </div>
-                
-                <div className={`border-t border-white/10 pt-5 grid grid-cols-3 gap-3`}>
-                  <div>
-                    <div className="font-display text-lg md:text-xl text-white">{FLAGSHIP_CASES[activeCase].metrics.m1}</div>
-                    <div className="font-mono text-[7px] uppercase text-paper/20 mt-1 tracking-wider">{FLAGSHIP_CASES[activeCase].labels.l1}</div>
+                <p className="text-paper/40 text-[13px] font-light leading-relaxed mb-6 flex-1 line-clamp-2">
+                  {project.desc}
+                </p>
+
+                {/* Footer Metadata */}
+                <div className="flex flex-wrap items-center gap-y-2 gap-x-4 pt-4 border-t border-white/5 font-mono text-[9px] uppercase tracking-widest">
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-[#f97316]">Country :</span> <span className="text-paper/60">{project.country}</span>
                   </div>
-                  <div>
-                    <div className={`font-display text-lg md:text-xl text-${FLAGSHIP_CASES[activeCase].accent}`}>{FLAGSHIP_CASES[activeCase].metrics.m2}</div>
-                    <div className="font-mono text-[7px] uppercase text-paper/20 mt-1 tracking-wider">{FLAGSHIP_CASES[activeCase].labels.l2}</div>
+                  <div className="w-px h-3 bg-white/10 hidden md:block"></div>
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-[#3b82f6]">Industry :</span> <span className="text-paper/60">{project.industry}</span>
                   </div>
-                  <div>
-                    <div className="font-display text-lg md:text-xl text-white">{FLAGSHIP_CASES[activeCase].metrics.m3}</div>
-                    <div className="font-mono text-[7px] uppercase text-paper/20 mt-1 tracking-wider">{FLAGSHIP_CASES[activeCase].labels.l3}</div>
+                  <div className="w-px h-3 bg-white/10 hidden md:block"></div>
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-[#3b82f6]">Category :</span> <span className="text-paper/60">{project.category}</span>
                   </div>
                 </div>
               </div>
             </div>
-
-            {/* Navigation Controls */}
-            <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-3 z-20">
-              {FLAGSHIP_CASES.map((_, i) => (
-                <button 
-                  key={i}
-                  onClick={() => setActiveCase(i)}
-                  className={`h-1.5 rounded-full transition-all duration-500 ${activeCase === i ? 'w-10 bg-acid shadow-[0_0_10px_rgba(234,179,8,0.4)]' : 'w-2 bg-white/10 hover:bg-white/30'}`}
-                />
-              ))}
-            </div>
-
-            <button 
-              onClick={() => setActiveCase((prev) => (prev === 0 ? FLAGSHIP_CASES.length - 1 : prev - 1))}
-              className="absolute -left-12 lg:-left-20 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full border border-white/10 bg-white/5 text-white items-center justify-center hidden lg:flex hover:bg-acid hover:text-ink hover:border-acid transition-all z-20 group/btn shadow-xl backdrop-blur-sm"
-            >
-              <span className="text-xl group-hover/btn:-translate-x-1 transition-transform">←</span>
-            </button>
-            <button 
-              onClick={() => setActiveCase((prev) => (prev === FLAGSHIP_CASES.length - 1 ? 0 : prev + 1))}
-              className="absolute -right-12 lg:-right-20 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full border border-white/10 bg-white/5 text-white items-center justify-center hidden lg:flex hover:bg-acid hover:text-ink hover:border-acid transition-all z-20 group/btn shadow-xl backdrop-blur-sm"
-            >
-              <span className="text-xl group-hover/btn:translate-x-1 transition-transform">→</span>
-            </button>
-          </div>
+          ))}
         </div>
 
         {/* Case Study Grid (The Arsenal of Results) */}
-        <div className="px-6 md:px-8 lg:px-16 max-w-7xl mx-auto mb-12 text-center pt-20 relative z-10">
+        <div className="px-4 md:px-8 lg:px-16 max-w-7xl mx-auto mb-12 text-center pt-20 relative z-10">
            <motion.div 
              initial={{ opacity: 0, y: 10 }}
              whileInView={{ opacity: 1, y: 0 }}
              viewport={{ once: true }}
-             className="font-mono text-[10px] tracking-[0.4em] uppercase text-acid mb-6 flex items-center justify-center gap-3"
+             className="font-mono text-[10px] tracking-[0.2em] md:tracking-[0.4em] uppercase text-acid mb-6 flex flex-wrap items-center justify-center gap-3"
            >
              <span className="w-8 h-px bg-white/10"></span>
              Direct Outcomes
@@ -756,12 +775,12 @@ export default function Cr8iveHome() {
              transition={{ delay: 0.1 }}
              className="font-display text-4xl md:text-6xl text-white mb-8 tracking-tighter"
            >
-             The Growth <span className="text-paper/20 italic">Ledger.</span>
+             The Growth <span className="font-serif italic font-normal text-paper/20">Ledger.</span>
            </motion.h4>
         </div>
 
         {/* Case Study Grid */}
-        <div className="px-6 md:px-8 lg:px-16 max-w-[90rem] mx-auto grid grid-cols-1 lg:grid-cols-3 gap-0 border border-white/10 relative z-10">
+        <div className="px-4 md:px-8 lg:px-16 max-w-[90rem] mx-auto grid grid-cols-1 lg:grid-cols-3 gap-0 border border-white/10 relative z-10">
           {[
             { metric: '+315%', sub: 'MRR Growth', client: 'Bangalore Fintech', desc: 'Restructured Google Ads strategy to reduce CPA by ₹8,500 while tripling volume.', img: '/performance_metrics_visualization_1776790374020.png' },
             { metric: '9.2x', sub: 'Blended ROAS', client: 'Mumbai E-Comm', desc: 'Rebuilt Meta funnel with dynamic creative testing generating ₹18 Cr in Q4.', img: '/case_2.png' },
@@ -811,8 +830,9 @@ export default function Cr8iveHome() {
         </div>
       </section>
 
+
       {/* The Operating System (Process) */}
-      <section id="process" className="py-12 md:py-20 px-6 md:px-8 lg:px-16 max-w-5xl mx-auto relative overflow-hidden">
+      <section id="process" className="py-12 md:py-20 px-4 md:px-8 lg:px-16 max-w-5xl mx-auto relative overflow-hidden">
         <div className="text-center mb-10 md:mb-16">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -830,7 +850,7 @@ export default function Cr8iveHome() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="font-display text-4xl md:text-6xl lg:text-7xl leading-none tracking-tighter text-white"
           >
-            How We <span className="text-paper/20 italic">Engineer</span> Growth.
+            How We <span className="font-serif italic font-normal text-paper/20">Engineer</span> Growth.
           </motion.h2>
         </div>
 
@@ -880,13 +900,13 @@ export default function Cr8iveHome() {
       </section>
 
       {/* The Boardroom (Testimonials) */}
-      <section id="boardroom" className="pt-10 pb-20 md:pt-14 md:pb-28 px-6 md:px-8 lg:px-16 bg-black text-paper relative overflow-hidden">
+      <section id="boardroom" className="pt-10 pb-20 md:pt-14 md:pb-28 px-4 md:px-8 lg:px-16 bg-black text-paper relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-rust/5 rounded-full filter blur-[150px] pointer-events-none"></div>
         
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-12 md:mb-20">
             <div className="font-mono text-xs tracking-[0.4em] uppercase text-acid mb-6">Voice of Authority</div>
-            <h2 className="font-display text-4xl md:text-6xl lg:text-7xl leading-none tracking-tighter text-white">The Boardroom <span className="text-paper/20 italic">Verdict.</span></h2>
+            <h2 className="font-display text-4xl md:text-6xl lg:text-7xl leading-none tracking-tighter text-white">The Boardroom <span className="font-serif italic font-normal text-paper/20">Verdict.</span></h2>
           </div>
 
           {/* Mobile: Swipeable Carousel */}
@@ -937,12 +957,12 @@ export default function Cr8iveHome() {
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 relative z-10">
             <div>
-              <div className="font-mono text-[10px] tracking-widest uppercase text-acid mb-6 flex items-center gap-3">
+              <div className="font-mono text-[10px] tracking-[0.2em] md:tracking-widest uppercase text-acid mb-6 flex flex-wrap items-center gap-3">
                 <span className="w-8 h-[2px] bg-acid"></span> 
                 The Checkpoint
               </div>
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl leading-[1.05] tracking-tighter mb-6 text-balance">
-                Outgrow your <span className="text-acid italic">competition.</span>
+                Outgrow your <span className="font-serif italic font-normal text-acid">competition.</span>
               </h2>
               <p className="text-sm md:text-base text-ink/85 font-normal mb-8 max-w-md">
                 Ready to stop guessing? Claim your complimentary Growth Audit. We&apos;ll show you exactly where you&apos;re losing money and the exact strategy we&apos;d use to fix it.
@@ -1001,8 +1021,14 @@ export default function Cr8iveHome() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-6 md:px-8 lg:px-16 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-8 max-w-7xl mx-auto text-center md:text-left">
-        <div className="font-display text-2xl tracking-widest text-white font-bold">CR8IVE<span className="text-acid">_</span></div>
+      <footer className="py-12 px-4 md:px-8 lg:px-16 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-8 max-w-7xl mx-auto text-center md:text-left">
+        <div className="flex items-center gap-2">
+          <img 
+            src="/assets/brand/logo1-removebg-preview.png" 
+            alt="CR8IVE" 
+            className="h-12 w-auto brightness-0 invert" 
+          />
+        </div>
         <div className="font-mono text-[10px] tracking-widest text-paper/40 uppercase max-w-[200px] md:max-w-none">© 2026 Cr8ive. Data-Driven Scaling.</div>
         <div className="flex flex-wrap justify-center gap-6 md:gap-8">
           {['LinkedIn', 'Intelligence', 'Case Studies', 'Terms'].map((link) => (

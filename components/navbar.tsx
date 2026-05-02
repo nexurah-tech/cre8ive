@@ -13,8 +13,7 @@ const NAV_LINKS = [
 ]
 
 const SOCIAL_ITEMS = [
-  { label: 'Twitter', link: 'https://twitter.com/cr8ive' },
-  { label: 'Instagram', link: 'https://instagram.com/cr8ive' },
+  { label: 'Instagram', link: 'https://www.instagram.com/cr8ive.in?igsh=MXVobGd0OHBsNDZldA==' },
   { label: 'LinkedIn', link: 'https://linkedin.com/company/cr8ive' },
 ]
 
@@ -42,6 +41,7 @@ export function Navbar() {
           socialItems={SOCIAL_ITEMS}
           accentColor="#EAB308"
           colors={['#1e1e22', '#35353c']}
+          logoUrl="/assets/brand/logo1-removebg-preview.png"
           menuButtonColor="#ffffff"
           openMenuButtonColor="#000000"
           isFixed={true}
@@ -50,10 +50,14 @@ export function Navbar() {
       </div>
 
       {/* Desktop Navbar */}
-      <header className={`fixed z-50 w-full transition-all duration-500 hidden lg:block ${scrolled ? 'top-2' : 'top-4'}`}>
-        <nav className="mx-auto w-[92%] max-w-6xl px-8 py-4 flex items-center justify-between bg-ink/80 backdrop-blur-xl rounded-full border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)] transition-all duration-500">
-          <a href="#" className="font-display text-2xl tracking-widest text-white flex items-center gap-1 group font-bold">
-            CR8IVE<span className="text-acid group-hover:animate-pulse">_</span>
+      <header className={`fixed z-50 w-full transition-all duration-500 hidden lg:block ${scrolled ? 'top-1' : 'top-2'}`}>
+        <nav className="mx-auto w-[92%] max-w-6xl px-8 py-0 flex items-center justify-between bg-ink/80 backdrop-blur-xl rounded-full border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)] transition-all duration-500">
+          <a href="#" className="relative flex items-center gap-2 group">
+            <img 
+              src="/assets/brand/logo1-removebg-preview.png" 
+              alt="CR8IVE" 
+              className="h-12 md:h-16 w-auto brightness-0 invert transition-all duration-500 group-hover:scale-110" 
+            />
           </a>
           
           <div className="flex gap-8 items-center">
