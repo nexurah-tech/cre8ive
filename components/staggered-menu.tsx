@@ -533,8 +533,8 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 .sm-scope .staggered-menu-header { position: fixed; top: 1.25rem; left: 5%; right: 5%; display: flex; align-items: center; justify-content: space-between; padding: 0.35rem 0.35rem 0.35rem 1.25rem; background: rgba(10, 10, 10, 0.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 9999px; pointer-events: none; z-index: 70; shadow: 0 10px 30px rgba(0, 0, 0, 0.5); }
 .sm-scope .staggered-menu-header > * { pointer-events: auto; }
 .sm-scope .sm-logo { display: flex; align-items: center; user-select: none; }
-.sm-scope .sm-logo-img { display: block; height: 24px; width: auto; object-fit: contain; }
-.sm-scope .sm-toggle { position: relative; display: flex; align-items: center; justify-content: center; width: 2.5rem; height: 2.5rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 9999px; cursor: pointer; transition: all 0.3s ease; }
+.sm-scope .sm-logo-img { display: block; height: 52px; width: auto; object-fit: contain; filter: brightness(0) invert(1); }
+.sm-scope .sm-toggle { position: relative; display: flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 9999px; cursor: pointer; transition: all 0.3s ease; }
 .sm-scope .sm-toggle:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.2); }
 .sm-scope .sm-toggle:focus-visible { outline: 2px solid #ffffffaa; outline-offset: 4px; border-radius: 9999px; }
 .sm-scope .sm-icon { display: none; }
