@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans, Outfit, JetBrains_Mono, Unbounded } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { CustomCursor } from '@/components/custom-cursor'
 import './globals.css'
 
 const _jakarta = Plus_Jakarta_Sans({
@@ -48,6 +49,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${_jakarta.variable} ${_outfit.variable} ${_jetbrains.variable} ${_unbounded.variable}`}>
       <body className="font-sans antialiased bg-paper text-ink cursor-none">
+        <CustomCursor />
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

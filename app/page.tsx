@@ -325,16 +325,6 @@ export default function Cr8iveHome() {
 
   const FLAGSHIP_CASES = [
     {
-      title: "Evergreen Farms — Premium Managed Farmland Real Estate",
-      desc: "Developed a high-end digital presence for Evergreen Farms, featuring immersive property showcases and an automated lead capture system for premium farmland investments.",
-      country: "India",
-      industry: "Real Estate",
-      category: "Digital Growth",
-      img: "/assets/projects/farm-land/Screenshot 2026-05-02 183526.png",
-      accent: "#10b981",
-      link: "https://farm-landing-ebon.vercel.app/"
-    },
-    {
       title: "Dr. RRB — Medical Excellence & Patient Acquisition",
       desc: "Built India's leading pain management digital identity for Dr. RRB, combining technical SEO dominance with a high-converting liquid-glass patient funnel.",
       country: "India",
@@ -343,6 +333,16 @@ export default function Cr8iveHome() {
       img: "/assets/projects/drrrb/Screenshot 2026-04-29 093512.png",
       accent: "#EAB308",
       link: "https://drrrbpaincare.com/"
+    },
+    {
+      title: "Evergreen Farms — Premium Managed Farmland Real Estate",
+      desc: "Developed a high-end digital presence for Evergreen Farms, featuring immersive property showcases and an automated lead capture system for premium farmland investments.",
+      country: "India",
+      industry: "Real Estate",
+      category: "Digital Growth",
+      img: "/assets/projects/farm-land/Screenshot 2026-05-02 183526.png",
+      accent: "#10b981",
+      link: "https://farm-landing-ebon.vercel.app/"
     }
   ]
 
@@ -409,13 +409,10 @@ export default function Cr8iveHome() {
               initial={{ opacity: 0, y: 22 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-              className="font-unbounded text-[clamp(2.4rem,5.5vw,5rem)] leading-[0.95] tracking-tight text-white mb-8 drop-shadow-[0_0_20px_rgba(234,179,8,0.15)]"
+              className="tracking-tight text-white mb-8 drop-shadow-[0_0_20px_rgba(234,179,8,0.15)]"
             >
-              Stop{' '}
-              <span className="font-serif italic font-normal text-paper/35">Guessing.</span>
-              <br />
-              Start{' '}
-              <span className="text-acid">Scaling.</span>
+              <span className="block font-display font-light text-[clamp(1.2rem,3vw,2.2rem)] leading-[1.2] whitespace-nowrap opacity-60">Stop Guessing.</span>
+              <span className="block font-unbounded font-black text-[clamp(1.8rem,4.5vw,3.5rem)] leading-[1.1] whitespace-nowrap text-acid">START SCALING.</span>
             </motion.h1>
 
             {/* Body */}
